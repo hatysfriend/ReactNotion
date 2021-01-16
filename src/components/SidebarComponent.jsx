@@ -13,15 +13,17 @@ export default function SidebarComponent() {
 
   //function to enable textbox and button
   function AddNewfile(bool) {
-    let input;
     if (bool) {
-      input = <React.Fragment><input id='newfile' className='addinput' type='text' />
-      <button className='addbtn' onClick={() => getfileName()}>✔</button></React.Fragment>;
+      return (
+      <React.Fragment>
+        <input id='newfile' className='addinput' type='text' />
+        <button className='addbtn' onClick={() => getfileName()}>✔</button>
+      </React.Fragment>
+      );
     }
     else {
-      input = '';
+      return null;
     }
-    return input;
   }
 
   //1. function to recive new page data
