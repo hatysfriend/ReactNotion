@@ -58,6 +58,7 @@ export default function SidebarComponent() {
 
   return (
     <HashRouter>
+      
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         </meta>
@@ -70,7 +71,7 @@ export default function SidebarComponent() {
           <div>
             <img className='addbtn' onClick={() => setShowTextbox(!showtextbox)} 
             src='imgs/addNewPageIcon.webp' height='28px' width='35px'
-             />
+             alt=""/>
 
             {AddNewfile(showtextbox)}
             <text className="errorMessage" value='' id="errorMessage"></text>
@@ -106,6 +107,6 @@ const defaultPage = [
     pageId: "846u9qm",
     pageName: "React",
     data: "1",
-    file_inside: <PageComponent></PageComponent>
+    file_inside: 'PageComponentID'
   }
 ];

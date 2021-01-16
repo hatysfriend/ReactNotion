@@ -3,23 +3,21 @@ body {
   }
   
   .sidenav {
-    height: 200em;
-    width: 14em;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(29, 25, 25);
-    overflow-x: hidden;
-    padding-top: 1em;
+    min-width: 14em;
+    background-color: rgb(80, 80, 80);
+    height:100vh;
+    width:15vw;
+    float:left;
+
     display: flex;
     flex-direction: column;
-    
   }
+
   .addbtn{
     /* height:5px;
     width: 5px; */
     color: rgb(221, 44, 21);
-    background-color: darkolivegreen;
+    background-color: rgb(114, 116, 117);
     font-size: 10px;
   }
   .addinput{
@@ -42,7 +40,7 @@ body {
     margin-left: 1em; 
   }
   
-  @media screen and (max-height: 100em) {
+  /* @media screen and (max-height: 60em) {
     .sidenav {padding-top: 5em;}
     .sidenav a {font-size: 1em;}
-  }  
+  }   */
