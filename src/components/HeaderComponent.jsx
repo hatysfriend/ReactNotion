@@ -7,8 +7,8 @@ export default class HeaderComponent extends Component {
       <div className='pageHeader'>
         <div className='backBtnHeader' >↩</div>
         <div className='forwardBtnHeader'>↪</div>
-        <div className='shareBtnHeader'>share</div>
-        <div className='updateBtnHeader'>update</div>
+        <div className='shareBtnHeader'>Share</div>
+        <div className='updateBtnHeader'>Updates</div>
         <div className='settingsBtnHeader'>...</div>
       </div>
     )

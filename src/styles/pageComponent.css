@@ -1,0 +1,52 @@
+.PageComponent {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 100px;
+
+  z-index: 1;
+  flex-grow: 1;
+  /* position: relative; */
+  /* align-items: center; */
+  overflow: auto;
+  
+
+  box-sizing: border-box;
+
+  max-width: 100%;
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  caret-color: rgba(255, 255, 255, 0.9);
+  padding: 3px 2px;
+  min-height: 1em;
+  color: rgba(255, 255, 255, 0.9);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.2);
+  cursor: text;
+}
+
+::selection {
+  background: rgba(45, 170, 219, 0.3);
+}
+
+.headerContentArea{
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.headerContentArea:empty:before{
+  content:attr(data-placeholder);
+  color:gray
+}
+
+.mainContentArea{
+  margin-left: 20%;
+  margin-right: 20%;  
+}
+
+.mainContentArea:empty::before {
+  content:attr(data-placeholder);
+  color:gray
+}
+
+
