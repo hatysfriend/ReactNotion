@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
-import '../styles/page.css'
-
+import '../styles/pageComponent.css'
 export default class PageComponent extends Component {
 
   state=[]
