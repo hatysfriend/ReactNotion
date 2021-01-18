@@ -23,8 +23,9 @@ export default class PageComponent extends Component {
          
         return (
             <div className="PageComponent">
-
-            </div>
+              <h1><span className="headerContentArea" contenteditable="true" data-placeholder="Untitled"></span></h1>
+              <span className="mainContentArea" contenteditable="true" data-placeholder="Type '/' for commands"></span>
+          </div>
         )
     }
 }
