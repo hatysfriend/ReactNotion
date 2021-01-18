@@ -1,21 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import '../styles/page.css'
 
-export default function PageComponent(){
-    const [pageList, setPageList] = useState('pageData');
+export default class PageComponent extends Component {
 
-      return (
-          <div className="PageComponent">
-              
-              
+  state=[]
+    // constructor(id, name) {
 
-              
-              <h1>Input Notes1</h1>
+    constructor(){
+        super();
+        this.state=[{
+            pageId: "846u9qm",
+            pageName: "React",
+            data: "1",
+            file_inside: [<PageComponent></PageComponent>]
+          }]
+    }
+    getName=()=>{
+        return this.state.pageName;
+         }
+    
 
-          </div>
-      )
+    render() {
+         
+        return (
+            <div className="PageComponent">
+
+            </div>
+        )
+    }
 }
 
-
-
-   

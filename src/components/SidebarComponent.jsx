@@ -7,17 +7,24 @@ import "../styles/sidebar.css";
 
 
 export default function SidebarComponent() {
-  const [pageList, setPageList] = useState(defaultPage);
+  const [pageList, setPageList] = useState([new PageComponent()]);
   const [showtextbox, setShowTextbox] = useState(false);
   let newpageName;
+  const icon =<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+  <path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>;
+
+  
+
+
 
   //function to enable textbox and button
   function AddNewfile(bool) {
+    console.log('object here? :'+new PageComponent().getName())
     if (bool) {
       return (
-      <React.Fragment>
+      <React.Fragment className='nav_input_btn'>
         <input id='newfile' className='addinput' type='text' />
-        <button className='addbtn' onClick={() => getfileName()}>✔</button>
+        <button className='addbtn2' onClick={() => getfileName()}>✔</button>
       </React.Fragment>
       );
     }
@@ -31,12 +38,12 @@ export default function SidebarComponent() {
   function getfileName() {
     const value = document.getElementById("newfile").value
     if (value == '' || value == null) {
-      document.getElementById("errorMessage").value = 'error';
+      document.getElementById("errorMessage").value = <p>error</p>;
     }
     else {
       let boolExistingName = false;
       pageList.map(page=>{
-        if(page.pageName ==value)
+        if(page.getName() ==value)
            boolExistingName=true;
       })
       if(!boolExistingName){
@@ -44,19 +51,19 @@ export default function SidebarComponent() {
       newpageName = value;
 
       const list = [...pageList]
-      list.push({
-        pageId: "846u9ffqm",
-        pageName: newpageName,
-        data: "1",
-      })
+      const pageObj = new newpageObj(newpageName);
+      list.push(pageObj);
       setPageList(list);
       setShowTextbox(!showtextbox);
-
-      }
-      
     }
-
-  }
+    }
+}
+function newpageObj(newpageName) {
+  const randomID = Math.random().toString(36).substring(7)
+  const pageObj = new PageComponent(randomID,newpageName)
+    return pageObj;
+    
+}
 
   return (
     <HashRouter>
@@ -64,30 +71,40 @@ export default function SidebarComponent() {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         </meta>
-
       </head>
+
       <body>
-        {/* Adding new page */}
+        {/* sidebar_header */}
         <div className="sidenav a">
-          <img src='imgs/icon.png' alt='' height='28px' width='35px' />
+          <img src='imgs/icon.png' alt='' height='28px' width='35px'></img>
+          <h1>React Notion</h1>
+
+
+          {/* sidebar_add_NewFile_btn */}
           <div>
-            <img className='addbtn' onClick={() => setShowTextbox(!showtextbox)} 
-            src='imgs/addNewPageIcon.webp' height='28px' width='35px'
-             alt=""/>
-
-            {AddNewfile(showtextbox)}
-            <text className="errorMessage" value='' id="errorMessage"></text>
-
-
-          </div>
-
-
-
+            <div className='addbtn' onClick={() => 
+              setShowTextbox(!showtextbox)}>+ Add New File</div> 
+              {AddNewfile(showtextbox)}
+              <text className="errorMessage" value='' id="errorMessage"></text>
+            </div>
+          
+          
           {/* showing pagelist */}
           {pageList.map((page) => {
-            return <NavLink className='navFont' to="/">{page.pageName}</NavLink>;
-          })}
+            console.log('this is pagelist: '+page.getName())
+            return<div>
+              <div className='navFont' to="/">{icon}{page.getName()}</div>
 
+              {/* showing child pages */}
+              {/* {if(page.file_inside.length ==0){
+                page.file_inside.map(small_page=>{
+                  <div>L<div>
+                })
+              }} */}
+
+              </div>;
+              
+          })}
         </div>
 
         {/* routing */}
@@ -104,11 +121,3 @@ export default function SidebarComponent() {
 // }
 
 
-const defaultPage = [
-  {
-    pageId: "846u9qm",
-    pageName: "React",
-    data: "1",
-    file_inside: 'PageComponentID'
-  }
-];
