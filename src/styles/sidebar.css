@@ -14,11 +14,10 @@ body {
   }
 
   .addbtn{
-    /* height:5px;
-    width: 5px; */
+    height:20px;
     color: rgb(221, 44, 21);
     background-color: rgb(114, 116, 117);
-    font-size: 10px;
+    
   }
   .addinput{
     height: 1em;
