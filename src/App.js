@@ -4,14 +4,20 @@ import SidebarComponent from "./components/SidebarComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import { useState } from "react";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+library.add(fas, fab);
+
 export default function App() {
   const [DBdata, setDBdata] = useState(DataFromDB);
+  const [showtextbox, setShowTextbox] = useState(false);
 
+  //checking new file name and add
   const handleAdd = (value) => {
     let arr = [...DBdata];
     if (value == "" || value == null) {
       console.log("YOU ENTERED A NULL/EMPTY VALUE");
-      // document.getElementById("errorMessage").value = <p>error</p>;
     } else {
       let boolExistingName = false;
       arr.map((page) => {
@@ -26,15 +32,18 @@ export default function App() {
           file_inside: "",
         });
         setDBdata(arr);
-        console.log(`The new ARRAY: ${JSON.stringify({arr})}`);
-        console.log(`The new ARRAY: ${JSON.stringify({DBdata})}`);
-      }
+        onOffBtn(showtextbox);
+}
     }
   };
 
+  const onOffBtn=(showtextbox)=> {
+    setShowTextbox(!showtextbox);
+  }
+
   return (
     <div className="App">
-      <SidebarComponent DBdata={DBdata} onAdd={handleAdd} />
+      <SidebarComponent DBdata={DBdata} onAdd={handleAdd} showtextbox={showtextbox}  onOffBtn={onOffBtn}/>
 
       <div className="mainContent">
         <HeaderComponent DBdata={DBdata} />
@@ -44,31 +53,19 @@ export default function App() {
   );
 }
 
-// const handleAdd = (value) => {
-//   if (value == "" || value == null) {
-//     // document.getElementById("errorMessage").value = <p>error</p>;
-//   } else {
-//     let boolExistingName = false;
-//     DBdata.map((page) => {
-//       if (page.name == value) boolExistingName = true;
-//     });
-//     if (!boolExistingName) {
-//       const arr = [...this.DBdata];
-//       arr.push({
-//         pageId: Math.random().toString(36).substring(7),
-//         pageName: value.pageName,
-//         pageData: value.pageData,
-//         file_inside: "",
-//       });
-//     }
-//   }
-// };
 
 const DataFromDB = [
   {
     pageId: "846u9qm",
     pageName: "React-Page-one",
     pageData: "1",
-    file_inside: ""
-  },
-];
+    childPages: [
+      {
+        pageId: "abc",
+        pageName: "React-Page-one",
+        pageData: "1",
+        file_inside: ['ccccc']
+      },
+    ]
+  }
+]

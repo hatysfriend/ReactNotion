@@ -20,7 +20,7 @@
   caret-color: rgba(255, 255, 255, 0.9);
   padding: 3px 2px;
   min-height: 1em;
-  color: rgba(255, 255, 255, 0.9);
+  /* color: rgba(255, 255, 255, 0.9); */
   /* -webkit-text-fill-color: rgba(255, 255, 255, 0.2); */
   cursor: text;
 }
@@ -50,3 +50,14 @@
 }
 
 
+
+.mainContentArea:hover + .contentButtons{
+  display: block;
+  
+  align-items: center;
+}
+
+.contentButtons {
+  display: none;
+  color: rgb(187, 97, 97);
+}
