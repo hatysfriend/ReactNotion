@@ -4,10 +4,10 @@ import SidebarComponent from "./components/SidebarComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import { useState } from "react";
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-library.add(fas, fab);
+// import { library } from "@fortawesome/fontawesome-svg-core";
+// import { fas } from "@fortawesome/free-solid-svg-icons";
+// import { fab } from "@fortawesome/free-brands-svg-icons";
+//library.add(fas, fab);
 
 export default function App() {
   const [DBdata, setDBdata] = useState(DataFromDB);
@@ -23,7 +23,7 @@ export default function App() {
       arr.map((page) => {
         if (page.pageName === value) boolExistingName = true;
       });
-       if(!boolExistingName) {
+      if (!boolExistingName) {
         console.log(`valuePageName: ${value}`);
         arr.push({
           pageId: Math.random().toString(36).substring(7),
@@ -33,17 +33,17 @@ export default function App() {
         });
         setDBdata(arr);
         onOffBtn(showtextbox);
-}
+      }
     }
   };
 
-  const onOffBtn=(showtextbox)=> {
+  const onOffBtn = (showtextbox) => {
     setShowTextbox(!showtextbox);
   }
 
   return (
     <div className="App">
-      <SidebarComponent DBdata={DBdata} onAdd={handleAdd} showtextbox={showtextbox}  onOffBtn={onOffBtn}/>
+      <SidebarComponent DBdata={DBdata} onAdd={handleAdd} showtextbox={showtextbox} onOffBtn={onOffBtn} />
 
       <div className="mainContent">
         <HeaderComponent DBdata={DBdata} />
@@ -56,16 +56,40 @@ export default function App() {
 
 const DataFromDB = [
   {
+    
     pageId: "846u9qm",
-    pageName: "React-Page-one",
-    pageData: "1",
-    childPages: [
+    pageName: "programing",
+    pageData: "fgfh",
+    file_inside: [
       {
         pageId: "abc",
-        pageName: "React-Page-one",
-        pageData: "1",
-        file_inside: ['ccccc']
+        pageName: "React",
+        pageData: "A/A",
+        file_inside: [
+          {
+            pageId: "abcde",
+            pageName: "State",
+            pageData: "4",
+            file_inside: []
+          },]
       },
-    ]
-  }
+      {
+        pageId: "abcd",
+        pageName: "Java",
+        pageData: "3",
+        file_inside: []
+      },
+      {
+        pageId: "abcde",
+        pageName: "C#",
+        pageData: "5",
+        file_inside: []
+      },
+    ],
+    
+  },{pageId: "cfhjsd",
+    pageName: "Leage Of Legends",
+    pageData: "6",
+    file_inside: []}
+  
 ]
