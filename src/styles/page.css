@@ -4,14 +4,4 @@
   
 }
 
-.pageHeader{
-  display: flex;
-  /* flex-direction: row; */
-  height: 32px;
-  width: 100%;
-  background-color: #6d6d6d;
-}
 
-.shareBtnHeader{
-  margin-left: auto;
-}
