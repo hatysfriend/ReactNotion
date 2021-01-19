@@ -3,11 +3,12 @@
   flex-direction: column;
 
   margin-top: 100px;
+  
 
   z-index: 1;
   flex-grow: 1;
-  /* position: relative; */
-  /* align-items: center; */
+  position: relative;
+  align-items: left;
   overflow: auto;
   
 
@@ -32,6 +33,14 @@
 .headerContentArea{
   margin-left: 20%;
   margin-right: 20%;
+  max-width: 80%;
+  width: 80%;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  cursor: text;
 }
 
 .headerContentArea:empty:before{
@@ -41,23 +50,28 @@
 
 .mainContentArea{
   margin-left: 20%;
-  margin-right: 20%;  
+  margin-right: 20%;
+  flex-shrink: 0;
+  flex-grow: 1;
+  width: 80%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.mainContentArea:empty::before {
+.contentArea:empty::before {
   content:attr(data-placeholder);
   color:gray
 }
 
-
-
-.mainContentArea:hover + .contentButtons{
-  display: block;
-  
-  align-items: center;
-}
-
-.contentButtons {
+.contentButtons:hover {
   display: none;
   color: rgb(187, 97, 97);
 }
+
+.mainContentArea:hover {
+  background-color: gray;
+  display: block;
+}
+

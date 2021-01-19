@@ -4,10 +4,10 @@ import SidebarComponent from "./components/SidebarComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import { useState } from "react";
 
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { fas } from "@fortawesome/free-solid-svg-icons";
-// import { fab } from "@fortawesome/free-brands-svg-icons";
-//library.add(fas, fab);
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+library.add(fas, fab);
 
 export default function App() {
   const [DBdata, setDBdata] = useState(DataFromDB);

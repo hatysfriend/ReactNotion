@@ -3,7 +3,7 @@ import { Route, NavLink, HashRouter } from "react-router-dom";
 import PageComponent from "./PageComponent";
 import "../styles/sidebar.css";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function SidebarComponent({
   DBdata,
@@ -11,7 +11,7 @@ export default function SidebarComponent({
   showtextbox,
   onOffBtn,
 }) {
-
+  let [childPageArray, setchildPageArray] = useState([{}]);
 
   //function to enable textbox and button
   function AddNewfile(bool) {
@@ -31,68 +31,118 @@ export default function SidebarComponent({
       return null;
     }
   }
-  function file_insideLoop(page) {
-    let File_insideHTML;
-    let pageNameStructure= page.pageName+"";
-      looping(page, File_insideHTML, pageNameStructure)
-      return File_insideHTML;
-    
+
+  //   function file_insideLoop(page) { //1
+  //     let File_insideHTML;
+  //     let pageNameStructure= page.pageName+"";
+  //     looping(page, File_insideHTML, pageNameStructure)
+  //   }
+
+  // function looping(page,File_insideHTML,pageNameStructure) {//2
+  //   let pns = pageNameStructure
+  //   if(page.file_inside !== null) {
+  //        page.file_inside.map(a => {
+  //         pns +="/" + a.pageName
+  //         console.log(pns)
+  //         File_insideHTML += a.pageName
+  //         looping(a,File_insideHTML,pns);//3
+  //         pns = pageNameStructure
+  //       })
+  //     }
+  //   }
+
+  function getChildPages(page) {
+
+    // (page.file_inside.length !== 0) && 
+    //   childPageArray.map((childPage) => {
+    //     console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
+    //     return (
+    //       <div>
+    //         <FontAwesomeIcon
+    //           icon="caret-down"
+    //           onClick={() => getChildPages(childPage)}
+    //         />
+    //         {childPage.pageName}
+    //       </div>
+    //     );
+    //    })
+      
+
+
+
+
+    let arr = [{page:[]}];
+    page.file_inside.map((childPages) => {
+      arr.page.push(childPages);
+    });
+    setchildPageArray(arr);
   }
 
-function looping(page,File_insideHTML,pageNameStructure) {
-  if(page.file_inside !== null) {
-       page.file_inside.map(a => {
-        pageNameStructure +="/" + a.pageName
-        console.log(pageNameStructure)
-        // File_insideHTML += <div className="navFont" to="/">{a.pageName}</div>
-        File_insideHTML += a.pageName
-        looping(a,File_insideHTML,pageNameStructure);
-      })
-    }
-  }
-    //sidebarcompenent rendering 
-    return (
-      <HashRouter>
-        <head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-          ></meta>
-        </head>
+  //sidebarcompenent rendering
+  return (
+    <HashRouter>
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+      </head>
 
-        <body>
-          {/* sidebar_header */}
-          <div className="sidenav a">
-            <img src="imgs/icon.png" alt="" height="28px" width="35px"></img>
-            <h1>React Notion</h1>
+      <body>
+        {/* sidebar_header */}
+        <div className="sidenav a">
+          <img src="imgs/icon.png" alt="" height="28px" width="35px"></img>
+          <h1>React Notion</h1>
 
-
-            {/* sidebar_add_NewFile_btn */}
-            <div>
-              <div className="addbtn" onClick={() => onOffBtn(showtextbox)}>
-                + Add New File
+          {/* sidebar_add_NewFile_btn */}
+          <div>
+            <div className="addbtn" onClick={() => onOffBtn(showtextbox)}>
+              + Add New File
             </div>
-              {AddNewfile(showtextbox)}
-              <text className="errorMessage" value="" id="errorMessage"></text>
-            </div>
-
-
-            {/*showing pagelist */}
-            {DBdata.map((page) => {
-              console.log(`THE PAGELIST: ${JSON.stringify(DBdata)}`);
-              return (
-                <div>
-                  <div className="navFont" to="/">
-                    {/* <FontAwesomeIcon icon="caret-down"/> */}
-                    {page.pageName}
-                  </div>
-
-                  {file_insideLoop(page)}
-                </div>
-              );
-            })}
+            {AddNewfile(showtextbox)}
+            <text className="errorMessage" value="" id="errorMessage"></text>
           </div>
-        </body>
-      </HashRouter>
-    );
-  }
+
+          {/*showing pagelist */}
+          {DBdata.map((page) => {       
+
+            return (
+              <React.Fragment>
+                {/* parent file name */}
+                <div className="navFont" to="/">
+                  <FontAwesomeIcon
+                    icon="caret-down"
+                    onClick={() => getChildPages(page)}
+                  />
+                  {page.pageName}
+                </div>
+
+
+                {/* child page name */} 
+                {console.log(childPageArray)}
+                 {(page.file_inside.length !== 0) && 
+                childPageArray.map((childPage) => {
+                  console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
+                  return (
+                    <div>
+                      <FontAwesomeIcon
+                        icon="caret-down"
+                        onClick={() => getChildPages(childPage)}
+                      />
+                      {childPage.pageName}
+                    </div>
+                  );
+                 })
+                } 
+                
+              </React.Fragment>
+            );
+          }
+          
+          
+          )}
+        </div>
+      </body>
+    </HashRouter>
+  );
+}
