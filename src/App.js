@@ -90,6 +90,13 @@ const DataFromDB = [
   },{pageId: "cfhjsd",
     pageName: "Leage Of Legends",
     pageData: "6",
-    file_inside: []}
+    file_inside: [
+      {
+        pageId: "abcfdde",
+        pageName: "Lux",
+        pageData: "7",
+        file_inside: []
+      }
+    ]}
   
 ]

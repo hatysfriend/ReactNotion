@@ -11,14 +11,14 @@ export default function SidebarComponent({
   showtextbox,
   onOffBtn,
 }) {
-  let [childPageArray, setchildPageArray] = useState([{}]);
-
+let arr =[]
+   
   //function to enable textbox and button
   function AddNewfile(bool) {
     if (bool) {
       return (
         <React.Fragment className="nav_input_btn">
-          <input id="newfile" className="addinput" type="text" />
+          <input idchildPageArray="newfile" className="addinput" type="text" />
           <button
             className="addbtn2"
             onClick={() => onAdd(document.getElementById("newfile").value)}
@@ -32,51 +32,52 @@ export default function SidebarComponent({
     }
   }
 
-  //   function file_insideLoop(page) { //1
-  //     let File_insideHTML;
-  //     let pageNameStructure= page.pageName+"";
-  //     looping(page, File_insideHTML, pageNameStructure)
-  //   }
+    function file_insideLoop(page) { //1
+      let File_insideHTML;
+      let pageNameStructure= page.pageName+"";
+      looping(page, File_insideHTML, pageNameStructure)
+    }
 
-  // function looping(page,File_insideHTML,pageNameStructure) {//2
-  //   let pns = pageNameStructure
-  //   if(page.file_inside !== null) {
-  //        page.file_inside.map(a => {
-  //         pns +="/" + a.pageName
-  //         console.log(pns)
-  //         File_insideHTML += a.pageName
-  //         looping(a,File_insideHTML,pns);//3
-  //         pns = pageNameStructure
-  //       })
-  //     }
-  //   }
+  function looping(page,File_insideHTML,pageNameStructure) {//2
+    let pns = pageNameStructure
+    if(page.file_inside !== null) {
+         page.file_inside.map(a => {
+          pns +="\s"+"\nL" + a.pageName
+          console.log(pns)
+          File_insideHTML += a.pageName
+          looping(a,File_insideHTML,pns);//3
+          pns = pageNameStructure
+        })
+      }
+    }
 
-  function getChildPages(page) {
+  // function getChildPages(page) {
 
-    // (page.file_inside.length !== 0) && 
-    //   childPageArray.map((childPage) => {
-    //     console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
-    //     return (
-    //       <div>
-    //         <FontAwesomeIcon
-    //           icon="caret-down"
-    //           onClick={() => getChildPages(childPage)}
-    //         />
-    //         {childPage.pageName}
-    //       </div>
-    //     );
-    //    })
+  //   // (page.file_inside.length !== 0) && 
+  //   //   childPageArray.map((childPage) => {
+  //   //     console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
+  //   //     return (
+  //   //       <div>
+  //   //         <FontAwesomeIcon
+  //   //           icon="caret-down"
+  //   //           onClick={() => getChildPages(childPage)}
+  //   //         />
+  //   //         {childPage.pageName}
+  //   //       </div>
+  //   //     );
+  //   //    })
+  //   let arr = []
+  //   page.file_inside.map((childPages) => {
       
+  //     arr.push(childPages);
+  //   });
+  //   childPageArray.push(arr);
+  //   arrCount++;        
+  //   console.log(arrCount);
+  //   console.log(childPageArray);
+  // }
 
-
-
-
-    let arr = [{page:[]}];
-    page.file_inside.map((childPages) => {
-      arr.page.push(childPages);
-    });
-    setchildPageArray(arr);
-  }
+  let arrCount=0;
 
   //sidebarcompenent rendering
   return (
@@ -102,38 +103,41 @@ export default function SidebarComponent({
             {AddNewfile(showtextbox)}
             <text className="errorMessage" value="" id="errorMessage"></text>
           </div>
-
+          
           {/*showing pagelist */}
-          {DBdata.map((page) => {       
+          
 
+          {DBdata.map((page) => { 
             return (
               <React.Fragment>
                 {/* parent file name */}
                 <div className="navFont" to="/">
                   <FontAwesomeIcon
                     icon="caret-down"
-                    onClick={() => getChildPages(page)}
+                    // onClick={() => getChildPages(page)}
                   />
                   {page.pageName}
+                  {file_insideLoop(page)}
                 </div>
 
 
                 {/* child page name */} 
-                {console.log(childPageArray)}
+                {/* {console.log(childPageArray)}
                  {(page.file_inside.length !== 0) && 
-                childPageArray.map((childPage) => {
+                childPageArray[0].map((childPage) => {
                   console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
                   return (
                     <div>
                       <FontAwesomeIcon
                         icon="caret-down"
                         onClick={() => getChildPages(childPage)}
-                      />
+                      /> 
                       {childPage.pageName}
                     </div>
                   );
-                 })
-                } 
+                 }
+                 )} */}
+          
                 
               </React.Fragment>
             );
