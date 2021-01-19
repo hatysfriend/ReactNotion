@@ -66,12 +66,22 @@
 }
 
 .contentButtons:hover {
-  display: none;
   color: rgb(187, 97, 97);
 }
 
-.mainContentArea:hover {
-  background-color: gray;
+.mainContentArea:hover~.addContentButton {
+  background-color: rgba(128, 128, 128, 0.493);
   display: block;
 }
 
+.addContentButton {
+  display: none;
+}
+  
+.showme {
+  display: none;
+}
+
+.showhim:hover .showme {
+  display: block;
+}

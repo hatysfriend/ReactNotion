@@ -33,20 +33,22 @@ let arr =[]
   }
 
     function file_insideLoop(page) { //1
-      let File_insideHTML;
-      let pageNameStructure= page.pageName+"";
-      looping(page, File_insideHTML, pageNameStructure)
+      let pageNameStructure= page.pageName;
+
+      looping(page, arr, pageNameStructure);
+      
     }
 
-  function looping(page,File_insideHTML,pageNameStructure) {//2
-    let pns = pageNameStructure
+  function looping(page,arr,pageNameStructure) {//2
+    let pns = pageNameStructure;
     if(page.file_inside !== null) {
          page.file_inside.map(a => {
-          pns +="\s"+"\nL" + a.pageName
-          console.log(pns)
-          File_insideHTML += a.pageName
-          looping(a,File_insideHTML,pns);//3
-          pns = pageNameStructure
+          pns +="\s"+"\nL" + a.pageName;  
+          console.log(pns);        
+          arr[arrCount] = [a];
+          looping(a,arr,pns);//3
+          pns = pageNameStructure;
+          
         })
       }
     }
@@ -110,14 +112,22 @@ let arr =[]
           {DBdata.map((page) => { 
             return (
               <React.Fragment>
-                {/* parent file name */}
+                
                 <div className="navFont" to="/">
-                  <FontAwesomeIcon
-                    icon="caret-down"
-                    // onClick={() => getChildPages(page)}
-                  />
-                  {page.pageName}
+                  <FontAwesomeIcon icon="caret-down" onClick={''}/>
+                  {page.pageName} {/* parent file name */}
                   {file_insideLoop(page)}
+                  {console.log(`inside Arr: ${JSON.stringify(arr)}`)}
+                  {arr.map(a=>{
+                    return(<div>
+                      <FontAwesomeIcon
+                        icon="caret-down"
+                      />
+                      {a.pageName}
+                      </div>);
+                    
+                  })}
+                  
                 </div>
 
 
@@ -141,6 +151,7 @@ let arr =[]
                 
               </React.Fragment>
             );
+            {arrCount++}
           }
           
           
