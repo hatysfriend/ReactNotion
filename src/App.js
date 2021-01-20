@@ -16,7 +16,7 @@ export default function App() {
   //checking new file name and add
   const handleAdd = (value) => {
     let arr = [...DBdata];
-    if (value == "" || value == null) {
+    if (value === "" || value === null) {
       console.log("YOU ENTERED A NULL/EMPTY VALUE");
     } else {
       let boolExistingName = false;

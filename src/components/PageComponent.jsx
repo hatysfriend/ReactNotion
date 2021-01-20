@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { Component} from 'react';
 import '../styles/pageComponent.css'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
