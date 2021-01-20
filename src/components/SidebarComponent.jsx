@@ -32,32 +32,33 @@ export default function SidebarComponent({
     }
   }
 
-  function file_insideLoop(page) { //1
-    let pageNameStructure = [];
-    const count = 1;
-    pageNameStructure.push(looping(page, pageNameStructure,count));
-    console.log("arr: " + pageNameStructure)
-    return (pageNameStructure);
-  }
+  // function file_insideLoop(page) { //1
+  //   let pageNameStructure = [];
+  //   const count = 1;
+  //   pageNameStructure.push(looping(page, pageNameStructure,count));
+  //   console.log("arr: " + pageNameStructure)
+  //   return (pageNameStructure);
+  // }
 
 
-  function looping(page, arr, count) {
-    if (page.file_inside.length !== 0) {
-      page.file_inside.map((a) => {//C£
-        arr.push([a, count])
-        if (a.file_inside.length !== 0) {
-          count++
-          arr.push(looping(a, arr, count))
-        }
-        count=1
-      })
-      return '';
-    }
-    return '';
-  }
-  // function nbsp(count){
-  //   let space =&nbsp;
-  //   space = space;
+  // function looping(page, arr, count) {
+  //   if (page.file_inside.length !== 0) {
+  //     page.file_inside.map((a) => {//C£
+  //       arr.push([a, count])
+  //       if (a.file_inside.length !== 0) {
+  //         count++
+  //         arr.push(looping(a, arr, count))
+  //       }
+  //       count=1
+  //     })
+  //     return '';
+  //   }
+  //   return '';
+  // }
+
+  // function nbsp(count){  // 1
+  //   let space =<p>&nbsp;</p>
+  //   space = space*count;
   //   console.log(space)
   //   return space;
 
@@ -102,7 +103,9 @@ export default function SidebarComponent({
                 </div>
 
                 {/* child file name*/}
-                <div> {file_insideLoop(page).map((a) => {
+                
+                <div> 
+                  {/* {file_insideLoop(page).map((a) => {
                   if (a !== '') {
                     {console.log("a[0]:" + a[0].pageName)}
                     {console.log("a[1]:" + a[1])}
@@ -110,17 +113,18 @@ export default function SidebarComponent({
                     return (
                       
                       <div className="navFont" to="/">
-                        {/* {nbsp(a[1])} */}
+                         {nbsp(a[1])} 
                         <FontAwesomeIcon icon="caret-down" onClick={''} />
                          {a[0].pageName}
                       </div>
                     );
                   }
-                })}</div>
-                {console.log(file_insideLoop(page))}
+                })} */}
+                </div>
+                
                 <br/>
               </React.Fragment>
-            );}  
+            );}   
           
           
           )}
