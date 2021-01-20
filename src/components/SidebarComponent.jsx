@@ -18,7 +18,7 @@ export default function SidebarComponent({
     if (bool) {
       return (
         <React.Fragment className="nav_input_btn">
-          <input idchildPageArray="newfile" className="addinput" type="text" id='newfile'/>
+          <input  className="addinput" type="text" id='newfile'/>
           <button
             className="addbtn2"
             onClick={() => onAdd(document.getElementById("newfile").value)}

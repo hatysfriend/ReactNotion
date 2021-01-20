@@ -14,12 +14,13 @@ export default class PageComponent extends Component {
                     <div className="contentButtons">
                         <FontAwesomeIcon className="addContentButton" icon="plus"/> 
 
-                        <FontAwesomeIcon className="settingsContentButton"  icon="ellipsis-v"/>
+                        <div className="settingsContentButton">
+                            <FontAwesomeIcon icon="ellipsis-v"/>
+                            <FontAwesomeIcon icon="ellipsis-v"/>
+                        </div>
+                        
+                        <span className="contentArea" contentEditable="true" data-placeholder="Type '/' for commands"></span>
                     </div>
-                    
-                  
-                    <span className="contentArea" contentEditable="true" data-placeholder="Type '/' for commands"></span>
-
                 </span>
             </div>
         )
