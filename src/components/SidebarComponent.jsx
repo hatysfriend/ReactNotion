@@ -11,14 +11,14 @@ export default function SidebarComponent({
   showtextbox,
   onOffBtn,
 }) {
-let arr =[]
-   
+
+
   //function to enable textbox and button
   function AddNewfile(bool) {
     if (bool) {
       return (
         <React.Fragment className="nav_input_btn">
-          <input idchildPageArray="newfile" className="addinput" type="text" />
+          <input idchildPageArray="newfile" className="addinput" type="text" id='newfile'/>
           <button
             className="addbtn2"
             onClick={() => onAdd(document.getElementById("newfile").value)}
@@ -32,54 +32,38 @@ let arr =[]
     }
   }
 
-    function file_insideLoop(page) { //1
-      let pageNameStructure= page.pageName;
+  function file_insideLoop(page) { //1
+    let pageNameStructure = [];
+    const count = 1;
+    pageNameStructure.push(looping(page, pageNameStructure,count));
+    console.log("arr: " + pageNameStructure)
+    return (pageNameStructure);
+  }
 
-      looping(page, arr, pageNameStructure);
-      
+
+  function looping(page, arr, count) {
+    if (page.file_inside.length !== 0) {
+      page.file_inside.map((a) => {//C£
+        arr.push([a, count])
+        if (a.file_inside.length !== 0) {
+          count++
+          arr.push(looping(a, arr, count))
+        }
+        count=1
+      })
+      return '';
     }
+    return '';
+  }
+  // function nbsp(count){
+  //   let space =&nbsp;
+  //   space = space;
+  //   console.log(space)
+  //   return space;
 
-  function looping(page,arr,pageNameStructure) {//2
-    let pns = pageNameStructure;
-    if(page.file_inside !== null) {
-         page.file_inside.map(a => {
-          pns +="\s"+"\nL" + a.pageName;  
-          console.log(pns);        
-          arr[arrCount] = [a];
-          looping(a,arr,pns);//3
-          pns = pageNameStructure;
-          
-        })
-      }
-    }
+  // };
 
-  // function getChildPages(page) {
 
-  //   // (page.file_inside.length !== 0) && 
-  //   //   childPageArray.map((childPage) => {
-  //   //     console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
-  //   //     return (
-  //   //       <div>
-  //   //         <FontAwesomeIcon
-  //   //           icon="caret-down"
-  //   //           onClick={() => getChildPages(childPage)}
-  //   //         />
-  //   //         {childPage.pageName}
-  //   //       </div>
-  //   //     );
-  //   //    })
-  //   let arr = []
-  //   page.file_inside.map((childPages) => {
-      
-  //     arr.push(childPages);
-  //   });
-  //   childPageArray.push(arr);
-  //   arrCount++;        
-  //   console.log(arrCount);
-  //   console.log(childPageArray);
-  // }
-
-  let arrCount=0;
 
   //sidebarcompenent rendering
   return (
@@ -104,55 +88,39 @@ let arr =[]
             </div>
             {AddNewfile(showtextbox)}
             <text className="errorMessage" value="" id="errorMessage"></text>
-          </div>
-          
-          {/*showing pagelist */}
-          
+          </div><br/>
 
-          {DBdata.map((page) => { 
+          {/*showing pagelist */}
+          {DBdata.map((page) => {
             return (
               <React.Fragment>
-                
+
+                {/* parent file name */}
                 <div className="navFont" to="/">
-                  <FontAwesomeIcon icon="caret-down" onClick={''}/>
-                  {page.pageName} {/* parent file name */}
-                  {file_insideLoop(page)}
-                  {console.log(`inside Arr: ${JSON.stringify(arr)}`)}
-                  {arr.map(a=>{
-                    return(<div>
-                      <FontAwesomeIcon
-                        icon="caret-down"
-                      />
-                      {a.pageName}
-                      </div>);
-                    
-                  })}
-                  
+                &nbsp;&nbsp;<FontAwesomeIcon icon="caret-down" onClick={''} />
+                  {page.pageName}
                 </div>
 
+                {/* child file name*/}
+                <div> {file_insideLoop(page).map((a) => {
+                  if (a !== '') {
+                    {console.log("a[0]:" + a[0].pageName)}
+                    {console.log("a[1]:" + a[1])}
 
-                {/* child page name */} 
-                {/* {console.log(childPageArray)}
-                 {(page.file_inside.length !== 0) && 
-                childPageArray[0].map((childPage) => {
-                  console.log(`CHECK THIS: ${JSON.stringify(childPageArray)}`);
-                  return (
-                    <div>
-                      <FontAwesomeIcon
-                        icon="caret-down"
-                        onClick={() => getChildPages(childPage)}
-                      /> 
-                      {childPage.pageName}
-                    </div>
-                  );
-                 }
-                 )} */}
-          
-                
+                    return (
+                      
+                      <div className="navFont" to="/">
+                        {/* {nbsp(a[1])} */}
+                        <FontAwesomeIcon icon="caret-down" onClick={''} />
+                         {a[0].pageName}
+                      </div>
+                    );
+                  }
+                })}</div>
+                {console.log(file_insideLoop(page))}
+                <br/>
               </React.Fragment>
-            );
-            {arrCount++}
-          }
+            );}  
           
           
           )}
@@ -161,3 +129,4 @@ let arr =[]
     </HashRouter>
   );
 }
+

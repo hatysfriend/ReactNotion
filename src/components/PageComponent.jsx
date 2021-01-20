@@ -10,21 +10,17 @@ export default class PageComponent extends Component {
             <div className="PageComponent">
                 <h1><span className="headerContentArea" contentEditable="true" data-placeholder="Untitled"></span></h1>
                 
-                <div className="mainContentArea">
-                
-                <div class="showhim">
-                    HOVER ME
-                    <div class="showme">
+                <span className="mainContentArea">
+                    <div className="contentButtons">
                         <FontAwesomeIcon className="addContentButton" icon="plus"/> 
-                        <FontAwesomeIcon className="settingsContentButton" icon="ellipsis-v"/>
-                        hai
+
+                        <FontAwesomeIcon className="settingsContentButton"  icon="ellipsis-v"/>
                     </div>
-                </div>
-                        
                     
-                    
+                  
                     <span className="contentArea" contentEditable="true" data-placeholder="Type '/' for commands"></span>
-                </div>
+
+                </span>
             </div>
         )
     }

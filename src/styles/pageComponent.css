@@ -65,23 +65,21 @@
   color:gray
 }
 
-.contentButtons:hover {
-  color: rgb(187, 97, 97);
+.contentButtons{
+  display: flex;
+  flex-direction: row;
+}
+  
+.addContentButton, .settingsContentButton {
+  display: none;
+  cursor: pointer;
 }
 
-.mainContentArea:hover~.addContentButton {
+.mainContentArea:hover .addContentButton{
   background-color: rgba(128, 128, 128, 0.493);
   display: block;
 }
-
-.addContentButton {
-  display: none;
-}
-  
-.showme {
-  display: none;
-}
-
-.showhim:hover .showme {
+.mainContentArea:hover .settingsContentButton{
+  background-color: rgba(128, 128, 128, 0.493);
   display: block;
 }
