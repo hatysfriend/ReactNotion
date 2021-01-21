@@ -50,6 +50,14 @@ export const SidebarData = [
         title: "Lux",
         path: "/lol/lux",
         icon: <IoIcons.IoIosPaper />,
+        subNav:[
+          {
+            title: "lux's ulti",
+            path: "/lol/lux/ulti",
+            icon: <IoIcons.IoIosPaper />,
+          }
+
+        ]
       },
       {
         title: "Ashe",

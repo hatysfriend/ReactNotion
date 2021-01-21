@@ -2,6 +2,58 @@ import React, {useState, Component } from 'react' //irc + tab
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+function loop(item,subnav){
+    {subnav && item.map((item, index)=>{  
+        return(
+            <>
+            <DropDownLink to={item.path} key={index}>
+                {item.icon}
+                <SidebarLabel>{item.title}</SidebarLabel>
+            </DropDownLink>
+            {loop(item.subNav,subnav)}
+            </>
+            );
+    })}
+}
+
+const Submenu = ({item}) => {
+    const [subnav, setSubnav] = useState(false);
+    const showShownav=()=>setSubnav(!subnav)     
+return (
+        <>
+            <SidebarLink to={item.path} onClick={item.subNav&&
+            showShownav}>
+                <div>
+                    {item.icon}
+                    <SidebarLabel>{item.title}</SidebarLabel>
+                </div>
+                <div>
+                    {item.subNav && subnav 
+                    ? item.iconOpened             
+                    : item.subNav                  
+                    ? item.iconClosed            
+                    : ''}                          
+                       
+                </div>
+            </SidebarLink>
+            
+            {subnav && item.subNav.map((item, index)=>{  
+                return(
+                    <>
+                    <DropDownLink to={item.path} key={index}>
+                        {item.icon}
+                        <SidebarLabel>{item.title}</SidebarLabel>
+                    </DropDownLink>
+                    {/* {loop(item.subNav,subnav)} */}
+                    </>
+                    );
+            })}
+        </>
+    )
+}
+export default Submenu
+
+
 const SidebarLink = styled(Link)`
 display: flex;
 color: #e1e9fc;
@@ -24,7 +76,7 @@ const SidebarLabel = styled.span`
 margin-left:16px;
 `;
 const DropDownLink = styled(Link)`
-background: #414757;
+background: #343336;
 height: 60px;
 padding-left:3rem;
 display: flex;
@@ -32,38 +84,4 @@ align-items:center;
 text-decoration: none;
 color:#f5f5f5;
 font-size:18px;
-
 `;
-
-const Submenu = ({item}) => {
-    const [subnav, setSubnav] = useState(false);
-    const showShownav=()=>setSubnav(!subnav)     
-return (
-        <>
-            <SidebarLink to={item.path} onClick={item.subNav&&
-            showShownav}>
-                <div>
-                    {item.icon}
-                    <SidebarLabel>{item.title}</SidebarLabel>
-                </div>
-                <div>
-                    {item.subNav && subnav 
-                    ? item.iconOpened             
-                    : item.subNav                  
-                    ? item.iconClosed            
-                    : ''}                          
-                       
-                </div>
-            </SidebarLink>
-            {subnav && item.subNav.map((item, index)=>{  
-                return(
-                    <DropDownLink to={item.path} key={index}>
-                        {item.icon}
-                        <SidebarLabel>{item.title}</SidebarLabel>
-                    </DropDownLink>
-                    );
-            })}
-        </>
-    )
-}
-export default Submenu

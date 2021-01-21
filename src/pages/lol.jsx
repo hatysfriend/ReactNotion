@@ -16,6 +16,14 @@ export const Lux = () => {
         </div>
     );
 }
+export const LuxR = () => {
+    console.log('lol/lux/R')
+    return (
+        <div className='lol'>
+            <h1>League Of Legends/lux/ulti</h1>
+        </div>
+    );
+}
 export const Ashe = () => {
     console.log('lol/ashe page opened')
     return (

@@ -1,0 +1,16 @@
+
+[[problem ]]
+
+-  currently we are not storing page data in datalist, what we coded is what we could see.
+    need to find the way to store the page data,
+
+- 
+
+[[work histories]]
+- completed navbar tutorial
+- all the old files are in temporaryBin, in case we wanna see old codes.
+
+
+[[attemting]]
+- making code to enable open even deep level subpage -k
+
