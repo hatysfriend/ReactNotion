@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Toggle extends Component {
+export default class ToggleComponent extends Component {
   state = {
     on:false,
   }
