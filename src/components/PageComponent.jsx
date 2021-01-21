@@ -12,6 +12,7 @@ export default class PageComponent extends Component {
 
                 <span className="mainContentArea">
                     <div className="contentButtons">
+                        
                         <Toggle>
                             {
                                 ({ on, toggle }) => (
@@ -22,6 +23,7 @@ export default class PageComponent extends Component {
                                 )
                             }
                         </Toggle>
+                        
                         <Toggle>
                             {
                                 ({ on, toggle }) => (

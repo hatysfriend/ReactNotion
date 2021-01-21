@@ -1,7 +1,10 @@
-import "./styles/App.css";
+//import "./styles/App.css";
 import PageComponent from "./components/PageComponent";
 import SidebarComponent from "./components/SidebarComponent";
 import HeaderComponent from "./components/HeaderComponent";
+import NewSidebar from './components/NewSidebar';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+
 import { useState } from "react";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -43,12 +46,14 @@ export default function App() {
 
   return (
     <div className="App">
-      <SidebarComponent DBdata={DBdata} onAdd={handleAdd} showtextbox={showtextbox} onOffBtn={onOffBtn} />
-
-      <div className="mainContent">
+      {/* <SidebarComponent DBdata={DBdata} onAdd={handleAdd} showtextbox={showtextbox} onOffBtn={onOffBtn} /> */}
+      <Router>
+        <NewSidebar/>
+        </Router>
+      {/* <div className="mainContent">
         <HeaderComponent DBdata={DBdata} />
         <PageComponent DBdata={DBdata} />
-      </div>
+      </div> */}
     </div>
   );
 }
