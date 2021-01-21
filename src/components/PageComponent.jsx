@@ -1,18 +1,10 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
 import '../styles/pageComponent.css'
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import Toggle from './Toggle';
+
 export default class PageComponent extends Component {
-
-    AddContentMenu(){
-
-    }
-
-    SettingsMenu(){
-
-    }
-
     render() {
         return (
             <div className="PageComponent">
@@ -20,9 +12,20 @@ export default class PageComponent extends Component {
                 
                 <span className="mainContentArea">
                     <div className="contentButtons">
-                        <FontAwesomeIcon className="addContentButton" icon="plus" onClick={()=>this.AddContentMenu()}/> 
+                    
+                    <Toggle>
+                    {
+                        ({on, toggle}) => (
+                            <React.Fragment>
+                                { (on) && (<h1>SHOW ME</h1>) }
+                                <button onClick={toggle}>Show/hide</button>
+                            </React.Fragment>
+                        )
+                    } 
+                    </Toggle>
 
-                        <div className="settingsContentButton" onClick={()=>this.SettingsMenu()}>
+                        <FontAwesomeIcon className="addContentButton" icon="plus"/>
+                        <div className="settingsContentButton">
                             <FontAwesomeIcon icon="ellipsis-v"/>
                             <FontAwesomeIcon icon="ellipsis-v"/>
                         </div>
@@ -32,6 +35,6 @@ export default class PageComponent extends Component {
                 </span>
             </div>
         )
-    }
+    }   
 }
 
