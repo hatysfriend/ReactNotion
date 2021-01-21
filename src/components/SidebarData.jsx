@@ -13,14 +13,29 @@ export const SidebarData = [
     iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
-        title: "Overview",
-        path: "/Overview/users",
+        title: "icon1",
+        path: "/Overview/icon1",
         icon: <IoIcons.IoIosPaper />,
       },
       {
-        title: "Revinue",
-        path: "/Overview/Revinue",
-        icon: <IoIcons.IoIosPaper />,
+        title: "icon2",
+        path: "/Overview/icon2",
+        icon: <FaIcons.FaCartPlus />,
+      },
+      {
+        title: "icon3",
+        path: "/Overview/icon3",
+        icon: <IoIcons.IoMdPeople />,
+      },
+      {
+        title: "icon4",
+        path: "/Overview/icon4",
+        icon: <FaIcons.FaEnvelope />,
+      },
+      {
+        title: "icon5",
+        path: "/Overview/icon5",
+        icon: <IoIcons.IoMdHelpCircle />,
       },
     ],
   },
@@ -47,39 +62,5 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
       },
     ],
-  },
-  {
-    title: "products",
-    path: "/products",
-    icon: <FaIcons.FaCartPlus />,
-  },
-  {
-    title: "team",
-    path: "/team",
-    icon: <IoIcons.IoMdPeople />,
-  },
-  {
-    title: "Messages",
-    path: "/messages",
-    icon: <FaIcons.FaEnvelope />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-    subNav: [
-      {
-        title: "Message 1",
-        path: "/messages/message1",
-        icon: <IoIcons.IoIosPaper />,
-      },
-      {
-        title: "Message2",
-        path: "/messages/message2",
-        icon: <IoIcons.IoIosPaper />,
-      },
-    ],
-  },
-  {
-    title: "Support",
-    path: "/support",
-    icon: <IoIcons.IoMdHelpCircle />,
   },
 ];

@@ -20,7 +20,6 @@ font-size:18px;
 }
 `;
 
-
 const SidebarLabel = styled.span`
 margin-left:16px;
 `;
@@ -36,12 +35,10 @@ font-size:18px;
 
 `;
 
-const Submenu = (props) => {
-    const item = props.item;
+const Submenu = ({item}) => {
     const [subnav, setSubnav] = useState(false);
-    const showShownav=()=>setSubnav(!subnav)
-
-    return (
+    const showShownav=()=>setSubnav(!subnav)     
+return (
         <>
             <SidebarLink to={item.path} onClick={item.subNav&&
             showShownav}>
@@ -51,23 +48,22 @@ const Submenu = (props) => {
                 </div>
                 <div>
                     {item.subNav && subnav 
-                    ? item.iconOpened 
-                    : item.subNav 
-                    ? item.iconClosed
-                    : ''}
+                    ? item.iconOpened             
+                    : item.subNav                  
+                    ? item.iconClosed            
+                    : ''}                          
+                       
                 </div>
             </SidebarLink>
-            {subnav && item.subNav.map((item, index)=>{
+            {subnav && item.subNav.map((item, index)=>{  
                 return(
                     <DropDownLink to={item.path} key={index}>
                         {item.icon}
                         <SidebarLabel>{item.title}</SidebarLabel>
                     </DropDownLink>
-
-                );
+                    );
             })}
         </>
     )
-
 }
 export default Submenu
