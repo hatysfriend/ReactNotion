@@ -9,8 +9,8 @@ export const SidebarData = [
     title: "Overview",
     path: "/Overview",
     icon: <AiIcons.AiFillHome />,
-    iconsClosed: <RiIcons.RiArrowDownSFill />,
-    iconsOpened: <RiIcons.RiArrowUpSFill />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
         title: "Overview",
@@ -28,8 +28,8 @@ export const SidebarData = [
     title: "League of Legends",
     path: "/lol",
     icon: <AiIcons.AiFillHome />,
-    iconsClosed: <RiIcons.RiArrowDownSFill />,
-    iconsOpened: <RiIcons.RiArrowUpSFill />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
         title: "Lux",
@@ -43,7 +43,7 @@ export const SidebarData = [
       },
       {
         title: "Miss Fortune",
-        path: "/lol/MF",
+        path: "/lol/mf",
         icon: <IoIcons.IoIosPaper />,
       },
     ],
@@ -62,8 +62,8 @@ export const SidebarData = [
     title: "Messages",
     path: "/messages",
     icon: <FaIcons.FaEnvelope />,
-    iconsClosed: <RiIcons.RiArrowDownSFill />,
-    iconsOpened: <RiIcons.RiArrowUpSFill />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
         title: "Message 1",

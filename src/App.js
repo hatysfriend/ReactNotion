@@ -1,15 +1,16 @@
-//import "./styles/App.css";
+import "./styles/App.css";
 import PageComponent from "./components/PageComponent";
 import SidebarComponent from "./components/SidebarComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import NewSidebar from './components/NewSidebar';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
+import {Lol, Lux, Ashe, Mf} from './pages/lol'
 import { useState } from "react";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import Overview from "./pages/Overview";
 library.add(fas, fab);
 
 export default function App() {
@@ -49,6 +50,13 @@ export default function App() {
       {/* <SidebarComponent DBdata={DBdata} onAdd={handleAdd} showtextbox={showtextbox} onOffBtn={onOffBtn} /> */}
       <Router>
         <NewSidebar/>
+        <Switch>
+          <Route path='/Overview' exact component={Overview}/>
+          <Route path='/lol' exact component={Lol}/>
+          <Route path='/lol/lux' exact component={Lux}/>
+          <Route path='/lol/ashe' exact component={Ashe}/>
+          <Route path='/lol/mf' exact component={Mf}/>
+        </Switch>
         </Router>
       {/* <div className="mainContent">
         <HeaderComponent DBdata={DBdata} />
@@ -57,6 +65,8 @@ export default function App() {
     </div>
   );
 }
+
+
 
 
 const DataFromDB = [

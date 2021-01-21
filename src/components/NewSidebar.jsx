@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import {SidebarData} from './NewSidebarData';
+import { SidebarData } from './NewSidebarData';
 import SubMenu from './NewSubMenu';
+import {IconContext} from 'react-icons/lib';
 
 const Nav = styled.div`
 background: #15171c;
@@ -32,7 +33,7 @@ display : flex;
 justify-content: center;
 position: fixed;
 top : 0;
-left:${({sidebar})=>(sidebar ? '0':'-100%')};
+left:${({ sidebar }) => (sidebar ? '0' : '-100%')};
 transition:350ms;
 z-index: 10;
 `;
@@ -43,27 +44,29 @@ width:100%;
 
 const NewSidebar = () => {
     const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () =>setSidebar(!sidebar);
+    const showSidebar = () => setSidebar(!sidebar);
 
-    return( 
-    <>
-        <Nav>
-            <NavIcon to='#'>
-                <FaIcons.FaBars onClick={showSidebar}/>
-            </NavIcon>
-        </Nav>
-        
-        <SidebarNav sidebar={sidebar}>
-            <SidebarWrap>
-                <NavIcon to='#'>
-                    <AiIcons.AiOutlineClose onClick={showSidebar} />
-                </NavIcon>
-                {SidebarData.map((item, index)=>{
-                    return <SubMenu item={item} key={index} />
-                })}
-            </SidebarWrap>
-        </SidebarNav>
-    </>
+    return (
+        <>
+            <IconContext.Provider value={{ color: 'yellow' }}>
+                <Nav>
+                    <NavIcon to='#'>
+                        <FaIcons.FaBars onClick={showSidebar} />
+                    </NavIcon>
+                </Nav>
+
+                <SidebarNav sidebar={sidebar}>
+                    <SidebarWrap>
+                        <NavIcon to='#'>
+                            <AiIcons.AiOutlineClose onClick={showSidebar} />
+                        </NavIcon>
+                        {SidebarData.map((item, index) => {
+                            return <SubMenu item={item} key={index} />
+                        })}
+                    </SidebarWrap>
+                </SidebarNav>
+            </IconContext.Provider>
+        </>
     );
 
 }
