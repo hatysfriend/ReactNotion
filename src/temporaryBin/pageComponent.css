@@ -96,9 +96,3 @@
 .addContentButton:hover, .settingsContentButton:hover{
   background: #9999998e;
 }
-
-.settingsMenu{
-  position: relative;
-  z-index: 1000;
- 
-}

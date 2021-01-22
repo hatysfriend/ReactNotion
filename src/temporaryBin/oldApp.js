@@ -21,29 +21,7 @@
 
 
 
-  //checking new file name and add
-  // const handleAdd = (value) => {
-  //   let arr = [...DBdata];
-  //   if (value === "" || value === null) {
-  //     console.log("YOU ENTERED A NULL/EMPTY VALUE");
-  //   } else {
-  //     let boolExistingName = false;
-  //     arr.map((page) => {
-  //       if (page.pageName === value) boolExistingName = true;
-  //     });
-  //     if (!boolExistingName) {
-  //       console.log(`valuePageName: ${value}`);
-  //       arr.push({
-  //         pageId: Math.random().toString(36).substring(7),
-  //         pageName: value,
-  //         pageData: value.pageData,
-  //         file_inside: "",
-  //       });
-  //       setDBdata(arr);
-  //       onOffBtn(showtextbox);
-  //     }
-  //   }
-  // };
+  
 
   // const onOffBtn = (showtextbox) => {
   //   setShowTextbox(!showtextbox);

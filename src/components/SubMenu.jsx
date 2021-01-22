@@ -1,16 +1,24 @@
 import React, { useState, Component } from 'react' //irc + tab
+import * as HiIcons from "react-icons/hi";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SubMenuTab from './SubMenuTab';
+import '../styles/App.css'
+
 
 const Submenu = ({ item }) => { //lol level
 
     const [subnav, setSubnav] = useState(false);
     const showShownav = () => setSubnav(!subnav)
+    
+    const openSettings = () => {
+        console.log('BUTTON CLICKED');
+    }
+
     return (
         <React.Fragment>
-
-            <SidebarLink to={item.path} onClick={item.subNav && showShownav}>
+            <div className="TabContainer">
+                <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} >
                 <div>
                     {item.icon}
                     <SidebarLabel>{item.title}</SidebarLabel>
@@ -24,7 +32,13 @@ const Submenu = ({ item }) => { //lol level
                         : ''
                     }
                 </div>
-            </SidebarLink>
+                
+                </SidebarLink>
+                
+                <settingsTabBtn className="settingsContentButton overlayLeft" onClick={openSettings}>
+                    <HiIcons.HiDotsHorizontal className="text" />
+                </settingsTabBtn>  
+            </div>
 
             {item.subNav && subnav &&
                 <SubMenuTab item={item} subnav={subnav}>
@@ -35,6 +49,7 @@ const Submenu = ({ item }) => { //lol level
     )
 }
 export default Submenu;
+
 
 
 export const SidebarLink = styled(Link)`
@@ -56,7 +71,7 @@ font-size:18px;
 `;
 
 export const SidebarLabel = styled.span`
-margin-left:16px;
+    margin-left:16px;
 `;
 
 export const DropDownLink = styled(Link)`
@@ -70,3 +85,15 @@ color:#f5f5f5;
 font-size:18px;
 `;
 
+{/* <style JSX>
+    .settingsContentButton {
+    display: none;
+    cursor: pointer;
+    }
+
+    .mainContentArea:hover .settingsContentButton{
+    display: block;
+    }
+
+
+</style> */}
