@@ -36,7 +36,8 @@ const Submenu = ({ item }) => { //lol level
                 </SidebarLink>
                 
                 <settingsTabBtn className="settingsContentButton overlayLeft" onClick={openSettings}>
-                    <HiIcons.HiDotsHorizontal className="text" />
+                    <HiIcons.HiDotsHorizontal/> 
+                     {/* <div className="errorMsg" />  */}
                 </settingsTabBtn>  
             </div>
 
@@ -84,16 +85,3 @@ text-decoration: none;
 color:#f5f5f5;
 font-size:18px;
 `;
-
-{/* <style JSX>
-    .settingsContentButton {
-    display: none;
-    cursor: pointer;
-    }
-
-    .mainContentArea:hover .settingsContentButton{
-    display: block;
-    }
-
-
-</style> */}

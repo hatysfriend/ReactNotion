@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-// import { SidebarData } from "./SidebarData
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
 import { SidebarLabel, DropDownLink, SidebarLink } from "./SubMenu";
 
-const Sidebar = (props) => {
+const Sidebar = ({data, handleAdd}) => {
 
-  console.log(`THE DATA IS HERE: ${JSON.stringify(props.data)}`)
-
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(false); //containing datalist
   const showSidebar = () => setSidebar(!sidebar);
-  const [sidebarp, setSidebarp] = useState(false);
+
+  const [sidebarp, setSidebarp] = useState(false); //switch to show/hide textbox
   const showSidebarp = () => setSidebarp(!sidebarp);
 
   return (
@@ -32,7 +30,7 @@ const Sidebar = (props) => {
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
 
-            {props.data.map((item, index) => {
+            {data.map((item, index) => {
               return <SubMenu item={item} key={index} />;
             })}
 
@@ -47,10 +45,10 @@ const Sidebar = (props) => {
               <DropDownLink>
                 <input className="addinput" type="text" id="newfile" />
                 <AiIcons.AiOutlineFileAdd
-                  onClick={
-                    (() => props.handleAdd(document.getElementById("newfile").value),
-                    showSidebarp)
-                  }
+                  onClick={() => {
+                    handleAdd(document.getElementById('newfile').value);
+                    showSidebarp();
+                  }}
                 />
               </DropDownLink>
             )}

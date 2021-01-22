@@ -1,4 +1,4 @@
-import React from "react"; //imr +tab
+import React, { useState } from 'react' //imr +tab
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
@@ -6,7 +6,39 @@ import * as RiIcons from "react-icons/ri";
 
 
 
-export let SidebarData = [
+
+export const HandleAdd = (value) => {
+  console.log('new file add btn clicked: ' + value);
+  let arr = [...Data];
+  if (value === "" || value === null) {
+    // document.getElementById('errorMsg').innerHTML = 'Invalid File Name';
+
+  } else {
+    let boolExistingName = false;
+    arr.map((obj) => {
+      if (obj.title === value) boolExistingName = true;
+    });
+    if (!boolExistingName) {
+      arr.push(
+        {
+          title: value,
+          path: '/' + value,
+          icon: <AiIcons.AiFillHome />,
+          subNav: []
+        }
+      );
+      Data = arr;
+      console.log('original data updatad' + JSON.stringify(Data))
+      return 'data stored'
+    }
+    // document.getElementById('errorMsg').innerHTML = 'The File name is already exist';
+  }
+}
+
+
+
+
+export let Data = [
   {
     title: "Overview",
     path: "/Overview",
@@ -69,7 +101,6 @@ export let SidebarData = [
               }
             ]
           }
-
         ]
       },
       {
@@ -83,32 +114,12 @@ export let SidebarData = [
         icon: <IoIcons.IoIosPaper />,
       },
     ],
-  },
-];
-
-export const HandleAdd = (value) => {
-  console.log('are you here?');
-  let arr = [...SidebarData];
-  if (value === "" || value === null){
-  } else {
-    let boolExistingName = false;
-    SidebarData.map((obj) => {
-      if (obj.title === value) boolExistingName = true;
-    });
-    if (!boolExistingName) {
-      arr.push(
-        {
-          title: value,
-          path: '/'+value,
-          icon: <AiIcons.AiFillHome />,
-          iconClosed: <RiIcons.RiArrowDownSFill />,
-          iconOpened: <RiIcons.RiArrowUpSFill />,
-          subNav: []
-        }
-      );
-    }
-    console.log(JSON.stringify(arr))
-    SidebarData = arr
-    
   }
-};
+]
+
+
+
+
+
+
+
