@@ -50,12 +50,16 @@ export const SidebarData = [
         title: "Lux",
         path: "/lol/lux",
         icon: <IoIcons.IoIosPaper />,
-        subNav:[
+        iconClosed: <RiIcons.RiArrowDownSFill />,
+        iconOpened: <RiIcons.RiArrowUpSFill />,
+        subNav: [
           {
             title: "lux's ulti",
             path: "/lol/lux/ulti",
             icon: <IoIcons.IoIosPaper />,
-            subNav:[
+            iconClosed: <RiIcons.RiArrowDownSFill />,
+            iconOpened: <RiIcons.RiArrowUpSFill />,
+            subNav: [
               {
                 title: "When to use Lux's Ulti",
                 path: "/lol/lux/ulti/when",

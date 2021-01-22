@@ -3,67 +3,78 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SubMenuTab from './SubMenuTab';
 
-const Submenu = ({ item }) => {
-    
-    function loop(item) { 
-        //lux sub [a.[a, b], b[a,b]]
-        let arr= []
-       console.log(`CURRENT ITEM: ${JSON.stringify(item)}`);  
-            item.subNav && item.subNav.map((item, index) => {  //lux R 
-                arr = [...childPage]  // get current array into temp
-                arr.push(item.title)  //pushing obj into temp
-                setChildPage(arr)
-                if(item.subNav){ 
-                    loop(item)
-                }
-                
-            })
-        
-       //  '<DropDownLink to={'+item.path+'} key={'+index+'}>'
-       // +item.icon+'<SidebarLabel>{'+item.title+'}</SidebarLabel>'
-       // +'</DropDownLink>';
-   }
-    
-    const [childPage, setChildPage] =useState([])
+const Submenu = ({ item }) => { //lol level
+
+
     const [subnav, setSubnav] = useState(false);
     const showShownav = () => setSubnav(!subnav)
     return (
         <>
-            
-            <SidebarLink to={item.path} onClick={item.subNav&&
-            showShownav}>
+
+            <SidebarLink to={item.path} onClick={item.subNav &&
+                showShownav}>
                 <div>
                     {item.icon}
                     <SidebarLabel>{item.title}</SidebarLabel>
                 </div>
                 <div>
-                    {item.subNav && subnav 
-                    ? item.iconOpened             
-                    : item.subNav                  
-                    ? item.iconClosed            
-                    : ''}                          
-                       
+                    {item.subNav && subnav
+                        ? item.iconOpened
+                        : item.subNav
+                            ? item.iconClosed
+                            : ''}
+
                 </div>
             </SidebarLink>
-            
-            {subnav && item.subNav.map((item, index)=>{  //lux
-                return(
-                    <>
-                    <DropDownLink to={item.path} key={index}>
-                        {item.icon}
-                        <SidebarLabel>{item.title}</SidebarLabel>
-                    </DropDownLink>
-                    {loop(item)}
-                    
-                    </>
-                    );
-            })}
-            {console.log(JSON.stringify(childPage))}
-        
+            {item.subNav && subnav &&
+                <SubnavRecursion item={item} subnav={subnav}>
+                </SubnavRecursion>
+            }
+
         </>
     )
 }
-export default Submenu
+export default Submenu;
+
+const SubnavRecursion = ({ item, subnav }) => {
+    const [subnav2, setSubnav2] = useState(false); //connect to child
+    const showShownav2 = () => setSubnav2(!subnav2)
+
+    return (
+        <>
+            {item.subNav.map((item, index) => { //lux level
+                return (
+                    <>
+                        <DropDownLink to={item.path} key={index}
+                            onClick={item.subNav && showShownav2}>
+                            <div>{item.icon}
+                                <SidebarLabel>{item.title}</SidebarLabel>
+                            </div>
+
+                            <div>
+                                {item.subNav && subnav2
+                                    ? item.iconOpened
+                                    : item.subNav
+                                        ? item.iconClosed
+                                        : ''}
+
+                            </div>
+                        </DropDownLink>
+                        {console.log(subnav)}
+
+                        {(item.subNav && subnav2) &&
+                            <SubnavRecursion item={item} subnav={subnav2} />
+                        }
+                    </>
+
+                );
+            })}
+        </>
+    );
+}
+
+
+
 
 
 const SidebarLink = styled(Link)`

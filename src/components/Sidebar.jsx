@@ -31,7 +31,7 @@ display : flex;
 justify-content: center;
 position: fixed;
 top : 0;
-left:${({ sidebar }) => (sidebar ? '83.4%' : '-100%')}; //0%:-100% 83.5
+left:${({ sidebar }) => (sidebar ? '0%' : '-100%')}; //0%:-100% 83.5
 transition:350ms;
 z-index: 10;`;
 
