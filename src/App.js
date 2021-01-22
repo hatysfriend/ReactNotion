@@ -12,15 +12,15 @@ export default function App() {
     <div className="App">
       <Router>
         <NewSidebar/>
-        <Switch>
-          <Route path='/Overview' exact component={Overview}/>
-          <Route path='/lol' exact component={Lol}/>
-          <Route path='/lol/lux' exact component={Lux}/>
-          <Route path='/lol/lux/R' exact component={LuxR}/>
-          <Route path='/lol/lux/R/ultiTime' exact component={UltiTime}/>
-          <Route path='/lol/ashe' exact component={Ashe}/>
-          <Route path='/lol/mf' exact component={Mf}/>
-        </Switch>
+          <Switch>
+            <Route path='/Overview' exact component={Overview}/>
+            <Route path='/lol' exact component={Lol}/>
+            <Route path='/lol/lux' exact component={Lux}/>
+            <Route path='/lol/lux/R' exact component={LuxR}/>
+            <Route path='/lol/lux/R/ultiTime' exact component={UltiTime}/>
+            <Route path='/lol/ashe' exact component={Ashe}/>
+            <Route path='/lol/mf' exact component={Mf}/>
+          </Switch>
         </Router>
       
     </div>
