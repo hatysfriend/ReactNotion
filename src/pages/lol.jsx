@@ -24,6 +24,16 @@ export const LuxR = () => {
         </div>
     );
 }
+
+export const UltiTime = () => {
+    console.log('lol/lux/R/ultiTime')
+    return (
+        <div className='lol'>
+            <h1>League Of Legends/lux/ulti/ultiTime</h1>
+        </div>
+    );
+}
+
 export const Ashe = () => {
     console.log('lol/ashe page opened')
     return (

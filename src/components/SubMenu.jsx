@@ -1,26 +1,35 @@
-import React, {useState, Component } from 'react' //irc + tab
+import React, { useState, Component } from 'react' //irc + tab
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import SubMenuTab from './SubMenuTab';
 
-function loop(item,subnav){
-    {subnav && item.map((item, index)=>{  
-        return(
-            <>
-            <DropDownLink to={item.path} key={index}>
-                {item.icon}
-                <SidebarLabel>{item.title}</SidebarLabel>
-            </DropDownLink>
-            {loop(item.subNav,subnav)}
-            </>
-            );
-    })}
-}
-
-const Submenu = ({item}) => {
+const Submenu = ({ item }) => {
+    
+    function loop(item) { 
+        //lux sub [a.[a, b], b[a,b]]
+        let arr= []
+       console.log(`CURRENT ITEM: ${JSON.stringify(item)}`);  
+            item.subNav && item.subNav.map((item, index) => {  //lux R 
+                arr = [...childPage]  // get current array into temp
+                arr.push(item.title)  //pushing obj into temp
+                setChildPage(arr)
+                if(item.subNav){ 
+                    loop(item)
+                }
+                
+            })
+        
+       //  '<DropDownLink to={'+item.path+'} key={'+index+'}>'
+       // +item.icon+'<SidebarLabel>{'+item.title+'}</SidebarLabel>'
+       // +'</DropDownLink>';
+   }
+    
+    const [childPage, setChildPage] =useState([])
     const [subnav, setSubnav] = useState(false);
-    const showShownav=()=>setSubnav(!subnav)     
-return (
+    const showShownav = () => setSubnav(!subnav)
+    return (
         <>
+            
             <SidebarLink to={item.path} onClick={item.subNav&&
             showShownav}>
                 <div>
@@ -37,17 +46,20 @@ return (
                 </div>
             </SidebarLink>
             
-            {subnav && item.subNav.map((item, index)=>{  
+            {subnav && item.subNav.map((item, index)=>{  //lux
                 return(
                     <>
                     <DropDownLink to={item.path} key={index}>
                         {item.icon}
                         <SidebarLabel>{item.title}</SidebarLabel>
                     </DropDownLink>
-                    {/* {loop(item.subNav,subnav)} */}
+                    {loop(item)}
+                    
                     </>
                     );
             })}
+            {console.log(JSON.stringify(childPage))}
+        
         </>
     )
 }
@@ -85,3 +97,4 @@ text-decoration: none;
 color:#f5f5f5;
 font-size:18px;
 `;
+
