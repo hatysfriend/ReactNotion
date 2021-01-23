@@ -15,3 +15,12 @@
 - making add new file btn work -
 - separeting menu btn from page card btn -
 
+
+[[[[recursive function]]]] 
+loop({arr}){
+    arr.inside.map(a=>{
+        a.inside&&<loop arr={a} /> 
+    })
+}
+
+

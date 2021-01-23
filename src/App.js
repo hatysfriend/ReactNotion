@@ -1,39 +1,178 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import "./styles/App.css";
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Lol, Lux, LuxR, UltiTime, Ashe, Mf } from './pages/lol'
+//import { Lol, Lux, LuxR, UltiTime, Ashe, Mf, pageC } from './pages/lol'
 import Overview from "./pages/Overview";
-import {HandleAdd ,Data} from './components/SidebarData'
 
-const App=()=>{
-  
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+import * as RiIcons from "react-icons/ri";
+
+export default function App() {
 
 
- 
+  let Datalist = [
+    {
+      id:"1",
+      title: "Overview",
+      path: "/Overview",
+      content:'Overview',
+      icon: <AiIcons.AiFillHome />,
+      iconClosed: <RiIcons.RiArrowDownSFill />,
+      iconOpened: <RiIcons.RiArrowUpSFill />,
+      subNav: [{
+        id:"1.1",
+        title: "icon1",
+        path: "/Overview/icon1",
+        content:<div>/Overview/icon1</div>,
+        icon: <IoIcons.IoIosPaper />,
+      }, {
+        title: "icon2",
+        path: "/Overview/icon2",
+        icon: <FaIcons.FaCartPlus />,
+        content:<div>/Overview/icon2</div>,
+      }, {
+        title: "icon3",
+        path: "/Overview/icon3",
+        icon: <IoIcons.IoMdPeople />,
+        content:<div>/Overview/icon3</div>,
+      }, {
+        title: "icon4",
+        path: "/Overview/icon4",
+        icon: <FaIcons.FaEnvelope />,
+        content:<div>/Overview/icon4</div>,
+      }, {
+        title: "icon5",
+        path: "/Overview/icon5",
+        icon: <IoIcons.IoMdHelpCircle />,
+        content:<div>/Overview/icon5</div>,
+      },],
+    },
+    {
+      title: "League of Legends",
+      path: "/lol",
+      icon: <AiIcons.AiFillHome />,
+      content:<h1>League Of Legends</h1>,
+      iconClosed: <RiIcons.RiArrowDownSFill />,
+      iconOpened: <RiIcons.RiArrowUpSFill />,
+      subNav: [{
+        title: "Lux",
+        path: "/lol/lux",
+        icon: <IoIcons.IoIosPaper />,
+        content:<h1>League Of Legends/Lux</h1>,
+        iconClosed: <RiIcons.RiArrowDownSFill />,
+        iconOpened: <RiIcons.RiArrowUpSFill />,
+        subNav: [{
+          title: "lux's ulti",
+          path: "/lol/lux/ulti",
+          icon: <IoIcons.IoIosPaper />,
+          content:<h1>League Of Legends/lux/ulti</h1>,
+          iconClosed: <RiIcons.RiArrowDownSFill />,
+          iconOpened: <RiIcons.RiArrowUpSFill />,
+          subNav: [{
+            title: "When to use Lux's Ulti",
+            path: "/lol/lux/ulti/when",
+            icon: <IoIcons.IoIosPaper />,
+            content:<h1>League Of Legends/lux/ulti/ultiTime</h1>,
+          }]
+        }]
+      }, {
+        title: "Ashe",
+        path: "/lol/ashe",
+        icon: <IoIcons.IoIosPaper />,
+        content:<h1>League Of Legends/Ashe</h1>,
+      }, {
+        title: "Miss Fortune",
+        path: "/lol/mf",
+        icon: <IoIcons.IoIosPaper />,
+        content:<h1>League Of Legends/Miss Fortune</h1>,
+      },],
+    }]
+
+  const [data, setdata] = useState(Datalist);
+
+
+  //add new function
+  const HandleAdd = (value) => {
+    console.log('new file add btn clicked: ' + value);
+    let arr = [...data];
+    if (value === "" || value === null) {
+      // document.getElementById('errorMsg').innerHTML = 'Invalid File Name';
+    } else {
+      let boolExistingName = false;
+      arr.map((obj) => {
+        if (obj.title === value) boolExistingName = true;
+      });
+      if (!boolExistingName) {
+        arr.push(
+          {
+            title: value,
+            path: '/' + value,
+            icon: <AiIcons.AiFillHome />,
+            subNav: []
+          }
+        );
+        setdata(arr);
+        //console.log('original data updatad \n' + JSON.stringify(data))
+        return 'data stored'
+      }// document.getElementById('errorMsg').innerHTML = 'The File name is already exist';
+    }
+  }
+
+
+
+
+
 
   return (
-  <div className="App">
-      {console.log(JSON.stringify(Data))}
+    <div className="App">
+      {/* {console.log(JSON.stringify(aa))} */}
       <Router>
-        <Sidebar data={Data} handleAdd={HandleAdd} />
+        <Sidebar data={data} handleAdd={HandleAdd} />
         <Switch>
-          <Route path='/Overview' exact component={Overview} />
-          <Route path='/lol' exact component={Lol} />
+          
+          
+          {data.map((item) => {
+             pageC(item);
+             <Route path={item.path} exact component={item} />
+            }
+          )}
+          {/* <Route path='/lol' exact component={Lol} />
           <Route path='/lol/lux' exact component={Lux} />
+          <Route path='/lol/mf' exact component={Mf} />
           <Route path='/lol/lux/R' exact component={LuxR} />
           <Route path='/lol/lux/R/ultiTime' exact component={UltiTime} />
-          <Route path='/lol/ashe' exact component={Ashe} />
-          <Route path='/lol/mf' exact component={Mf} />
+          <Route path='/Overview' exact component={Overview} />
+          <Route path='/lol/ashe' exact component={Ashe} /> */}
           
+
         </Switch>
       </Router>
 
     </div>
   )
+  {
+
+  }
+}
+
+const pageC = (obj) => {
+  // console.log('page: '+obj.title+' will be displyed');
+
+  //  obj+'a'(){
+  //   return obj.content;
+  //}
+  
   
 }
-export default App;
+
+
+
+
+
+
 
 
 

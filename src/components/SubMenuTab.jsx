@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {SidebarLabel, DropDownLink} from './SubMenu'
+import { SidebarLabel, DropDownLink } from './SubMenu'
 
 const SubMenuTab = ({ item, subnav }) => {
 
@@ -18,23 +18,18 @@ const SubMenuTab = ({ item, subnav }) => {
               </div>
 
               <div>
-                {
-                  item.subNav && subnav2
+                {item.subNav && subnav2
                   ? item.iconOpened
                   : item.subNav
-                  ? item.iconClosed
-                  : ''
-                }
-
+                    ? item.iconClosed
+                    : ''}
               </div>
             </DropDownLink>
             {console.log(subnav)}
-
             {(item.subNav && subnav2) &&
               <SubMenuTab item={item} subnav={subnav2} />
             }
           </React.Fragment>
-
         );
       })}
     </React.Fragment>

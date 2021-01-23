@@ -35,10 +35,10 @@ const Submenu = ({ item }) => { //lol level
                 
                 </SidebarLink>
                 
-                <settingsTabBtn className="settingsContentButton overlayLeft" onClick={openSettings}>
+                <div className="SidebarSettings" onClick={openSettings}>
                     <HiIcons.HiDotsHorizontal/> 
                      {/* <div className="errorMsg" />  */}
-                </settingsTabBtn>  
+                </div>  
             </div>
 
             {item.subNav && subnav &&
