@@ -10,49 +10,57 @@ const Submenu = ({ item }) => { //lol level
 
     const [subnav, setSubnav] = useState(false);
     const showShownav = () => setSubnav(!subnav)
-    
-    const openSettings = () => {
-        console.log('BUTTON CLICKED');
-    }
 
     return (
         <React.Fragment>
             <div className="TabContainer">
                 <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} >
-                <div>
-                    {item.icon}
-                    <SidebarLabel>{item.title}</SidebarLabel>
-                </div>
-
-                <div>
-                    {item.subNav && subnav
-                        ? item.iconOpened
-                        : item.subNav
-                        ? item.iconClosed
-                        : ''
-                    }
-                </div>
-                
+                 {showParentSidebar(subnav,item)}
                 </SidebarLink>
-                
-                <div className="SidebarSettings" onClick={openSettings}>
-                    <HiIcons.HiDotsHorizontal/> 
-                     {/* <div className="errorMsg" />  */}
-                </div>  
             </div>
 
             {item.subNav && subnav &&
                 <SubMenuTab item={item} subnav={subnav}>
                 </SubMenuTab>
             }
-
-        </React.Fragment>
+            </React.Fragment>
     )
 }
 export default Submenu;
 
+//  what is this? your testing things
+
+// const openSettings = () => {
+//     console.log('BUTTON CLICKED');
+// }
+// <div className="SidebarSettings" onClick={openSettings}>
+//                     <HiIcons.HiDotsHorizontal />
+//                      <div className="errorMsg" />  
+//                 </div>
 
 
+
+
+//js functions
+const showParentSidebar = (subnav,item) => {
+    return (
+        <><div>
+                {item.icon}
+                <SidebarLabel>{item.title}</SidebarLabel>
+            </div>
+            <div>
+                {item.subNav && subnav
+                    ? item.iconOpened
+                    : item.subNav
+                        ? item.iconClosed
+                        : ''
+                }
+            </div></>
+            );
+}
+
+
+//css
 export const SidebarLink = styled(Link)`
 display: flex;
 color: #e1e9fc;
@@ -70,11 +78,9 @@ font-size:18px;
     cursor:pointer;
 }
 `;
-
 export const SidebarLabel = styled.span`
     margin-left:16px;
 `;
-
 export const DropDownLink = styled(Link)`
 background: #343336;
 height: 60px;

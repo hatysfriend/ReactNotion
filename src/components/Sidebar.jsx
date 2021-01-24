@@ -7,11 +7,10 @@ import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
 import { SidebarLabel, DropDownLink, SidebarLink } from "./SubMenu";
 
-const Sidebar = ({data, handleAdd}) => {
+const Sidebar = ({ data, handleAdd }) => {
 
   const [sidebar, setSidebar] = useState(false); //containing datalist
   const showSidebar = () => setSidebar(!sidebar);
-
   const [sidebarp, setSidebarp] = useState(false); //switch to show/hide textbox
   const showSidebarp = () => setSidebarp(!sidebarp);
 
@@ -34,24 +33,7 @@ const Sidebar = ({data, handleAdd}) => {
               return <SubMenu item={item} key={index} />;
             })}
 
-            {/* <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} > */}
-            <SidebarLink className="SidebarLink" onClick={showSidebarp} to="/">
-              <div>
-                <SidebarLabel>Add new File</SidebarLabel>
-              </div>
-            </SidebarLink>
-
-            {sidebarp && (
-              <DropDownLink>
-                <input className="addinput" type="text" id="newfile" />
-                <AiIcons.AiOutlineFileAdd
-                  onClick={() => {
-                    handleAdd(document.getElementById('newfile').value);
-                    showSidebarp();
-                  }}
-                />
-              </DropDownLink>
-            )}
+            {AddNewParentFile(showSidebarp, sidebarp, handleAdd)} {/* add btn */}
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
@@ -61,7 +43,26 @@ const Sidebar = ({data, handleAdd}) => {
 export default Sidebar;
 
 
-//JS
+//JS functions
+
+const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
+  return (<>
+    <SidebarLink className="SidebarLink" onClick={showSidebarp} to="/">
+      <div><SidebarLabel>Add new File</SidebarLabel></div>
+    </SidebarLink>
+
+    {sidebarp && (
+      <DropDownLink>
+        <input className="addinput" type="text" id="newfile" />
+        <AiIcons.AiOutlineFileAdd
+          onClick={() => {
+            handleAdd(document.getElementById('newfile').value);
+            showSidebarp();
+          }} />
+      </DropDownLink>
+    )}</>
+  );
+}
 
 
 
@@ -74,7 +75,6 @@ const Nav = styled.div`
   justify-content: flex-start;
   align-items: center;
 `;
-
 const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
@@ -84,7 +84,6 @@ const NavIcon = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 `;
-
 const SidebarNav = styled.nav`
   background: #15171c;
   width: 250px;
@@ -97,7 +96,6 @@ const SidebarNav = styled.nav`
   transition: 350ms;
   z-index: 10;
 `;
-
 const SidebarWrap = styled.nav`
   width: 100%;
 `;
