@@ -12,18 +12,20 @@ const SubMenuTab = ({ item, subnav }) => {
         return (
           <React.Fragment>
             <DropDownLink to={item.path} key={index} onClick={item.subNav && showShownav2}>
-              <div>
-                {item.icon}
-                <SidebarLabel>{item.title}</SidebarLabel>
-              </div>
-
-              <div>
+            
+            <div className="openTabIcon">
                 {item.subNav && subnav2
                   ? item.iconOpened
                   : item.subNav
                     ? item.iconClosed
                     : ''}
               </div>
+
+              <div>
+                {item.icon}
+                <SidebarLabel>{item.title}</SidebarLabel>
+              </div>
+
             </DropDownLink>
             {console.log(subnav)}
             {(item.subNav && subnav2) &&
