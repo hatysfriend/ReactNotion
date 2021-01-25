@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import "./styles/App.css";
 import Sidebar from './components/Sidebar';
-import { BrowserRouter as Router, Switch, Route, StaticRouter } from 'react-router-dom'
-//import { Lol, Lux, LuxR, UltiTime, Ashe, Mf, pageC } from './pages/lol'
-import Overview from "./temporaryBin/jsx/pages/Overview";
-
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";

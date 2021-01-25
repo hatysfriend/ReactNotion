@@ -6,8 +6,9 @@
 - got textbox and its btn to work                        -[done]
 - making code to enable open even deep level subpage     -[done]
 - making add new file btn work                           -[done]
-- separeting menu btn from page card btn -gaveUP         -[GaveUp]
-- making routers dynamicly                               -[tryingTo]
+- separeting menu btn from page card btn -gaveUP         -[done]
+- making routers dynamicly                               -[in progress]
+- implementing modal to the setting btn                  -[in progress]
 
 
 [[[[recursive function]]]] 

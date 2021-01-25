@@ -5,7 +5,6 @@ import * as AiIcons from "react-icons/ai";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
-import { SidebarLabel, DropDownLink, SidebarLink } from "./SubMenu";
 
 const Sidebar = ({ data, handleAdd }) => {
 
@@ -35,6 +34,7 @@ const Sidebar = ({ data, handleAdd }) => {
             })}
 
             {AddNewParentFile(showSidebarp, sidebarp, handleAdd)} {/* add btn */}
+
           </SidebarWrap>
         </SidebarNav>
       </IconContext.Provider>
@@ -45,8 +45,8 @@ export default Sidebar;
 
 
 //JS functions
-
-const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
+//Description: Adds a new Sidebar Tab
+export const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
   return (<>
     <SidebarLink className="SidebarLink" onClick={showSidebarp}  >
       <div><SidebarLabel>Add new File</SidebarLabel></div>
@@ -66,16 +66,23 @@ const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
 }
 
 
-
 // css
-const Nav = styled.div`
+
+
+
+
+
+
+
+
+export const Nav = styled.div`
   background: #15171c;
   height: 80px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `;
-const NavIcon = styled(Link)`
+export const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
   height: 80px;
@@ -84,7 +91,7 @@ const NavIcon = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 `;
-const SidebarNav = styled.nav`
+export const SidebarNav = styled.nav`
   background: #15171c;
   width: 250px;
   height: 100vh;
@@ -96,6 +103,41 @@ const SidebarNav = styled.nav`
   transition: 350ms;
   z-index: 10;
 `;
-const SidebarWrap = styled.nav`
+export const SidebarWrap = styled.nav`
   width: 100%;
+`;
+
+//css
+ 
+export const SidebarLink = styled(Link)`
+position: relative;
+display: flex;
+color: #e1e9fc;
+${'' /* justify-content: space-between; */}
+align-items:center;
+padding:20px;
+list-style:none;
+height:60px;
+text-decoration:none;
+font-size:18px;
+
+&:hover{
+    background: #252831;
+    border-left: 4px solid #632ce4;
+    cursor:pointer;
+}
+`;
+export const SidebarLabel = styled.span`
+    margin-left:16px;
+`;
+
+export const DropDownLink = styled(Link)`
+background: #343336;
+height: 60px;
+padding-left:3rem;
+display: flex;
+align-items:center;
+text-decoration: none;
+color:#f5f5f5;
+font-size:18px;
 `;

@@ -1,111 +1,46 @@
-import React, { useState, Component } from 'react' //irc + tab
+import React, { useState} from 'react' //irc + tab
 import * as HiIcons from "react-icons/hi";
 import * as FaIcons from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import '../styles/App.css';
+import '../styles/SubMenu.css';
+import { SidebarLink, SidebarLabel } from './Sidebar';
 import SubMenuTab from './SubMenuTab';
-import '../styles/App.css'
-import '../styles/SubMenu.css'
-
+import Modal from './SettingsPopUp'
 
 const Submenu = ({ item }) => { //lol level
 
     const [subnav, setSubnav] = useState(false);
     const showShownav = () => setSubnav(!subnav)
-    
-    const openSettings = () => {
-        console.log('SETTINGS BUTTON CLICKED');
-    }
 
-    const handleAdd = () => {
-        console.log('ADD BUTTON CLICKED');
-    }
+    
+    const [isOpen, setIsOpen] = useState(false);
+  
 
     return (
         <React.Fragment>
-        <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} >
-                 
-                {/* {showParentSidebar(subnav,item)} */}
-
-                    <div className="openTabIcon" onClick={item.subNav && showShownav}>
-                        {item.subNav && subnav
-                            ? item.iconOpened
-                            : item.subNav
-                            ? item.iconClosed
-                            : ''
-                        }
-                    </div>
-                    <div>{item.icon}</div>
+            <SidebarLink className="SidebarLink" to={item.path}>
+                {/*Icon + Item Title + Open/Close-Triangle*/}
+                <div onClick={item.subNav && showShownav}>
+                    {item.icon}
                     <SidebarLabel>{item.title}</SidebarLabel>
+                    {item.subNav && subnav ? item.iconOpened : item.subNav ? item.iconClosed : ''}
+                </div>
 
-                    <div className="SidebarSettings" >
-                    <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={openSettings}/> 
-                    <FaIcons.FaPlusSquare className="addBtn" onClick={handleAdd}/> 
-                    </div> 
-
-                </SidebarLink>
-
+                {/*onHover dot-dot*/}
+                <div className="SidebarSettings" >
+                    <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={()=>setIsOpen(true)} />
+                </div>
+            </SidebarLink>
+            
+            {/*Settings Modal*/}
+            <Modal open={isOpen} onClose={()=>setIsOpen(false)}> Fancy TM</Modal>
+            
+            {/*Child Pages*/}
             {item.subNav && subnav &&
-                <SubMenuTab item={item} subnav={subnav}>
-                </SubMenuTab>
+                <SubMenuTab item={item} subnav={subnav}/>
             }
-            </React.Fragment>
+        </React.Fragment>
     )
 }
 export default Submenu;
 
-
-
-
-
-//js functions
-const showParentSidebar = (subnav,item) => {
-    return (
-        <><div>
-                {item.icon}
-                <SidebarLabel>{item.title}</SidebarLabel>
-            </div>
-            <div>
-                {item.subNav && subnav
-                    ? item.iconOpened
-                    : item.subNav
-                        ? item.iconClosed
-                        : ''
-                }
-            </div></>
-            );
-}
-
-
-//css
-export const SidebarLink = styled(Link)`
-position: relative;
-display: flex;
-color: #e1e9fc;
-${'' /* justify-content: space-between; */}
-align-items:center;
-padding:20px;
-list-style:none;
-height:60px;
-text-decoration:none;
-font-size:18px;
-
-&:hover{
-    background: #252831;
-    border-left: 4px solid #632ce4;
-    cursor:pointer;
-}
-`;
-export const SidebarLabel = styled.span`
-    margin-left:16px;
-`;
-export const DropDownLink = styled(Link)`
-background: #343336;
-height: 60px;
-padding-left:3rem;
-display: flex;
-align-items:center;
-text-decoration: none;
-color:#f5f5f5;
-font-size:18px;
-`;
