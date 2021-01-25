@@ -47,7 +47,7 @@ export default Sidebar;
 
 const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
   return (<>
-    <SidebarLink className="SidebarLink" onClick={showSidebarp} to="/">
+    <SidebarLink className="SidebarLink" onClick={showSidebarp}  >
       <div><SidebarLabel>Add new File</SidebarLabel></div>
     </SidebarLink>
 
@@ -63,7 +63,6 @@ const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
     )}</>
   );
 }
-
 
 
 
