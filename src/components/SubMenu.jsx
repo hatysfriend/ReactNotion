@@ -5,7 +5,7 @@ import '../styles/App.css';
 import '../styles/SubMenu.css';
 import { SidebarLink, SidebarLabel } from './Sidebar';
 import SubMenuTab from './SubMenuTab';
-import Modal from './SettingsPopUp'
+import Modal from './Modal'
 
 const Submenu = ({ item }) => { //lol level
 

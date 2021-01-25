@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
-import SettingsPopUp from './components/SettingsPopUp'
+import SettingsPopUp from './components/Modal'
 
 ReactDOM.render(
   <React.StrictMode>
