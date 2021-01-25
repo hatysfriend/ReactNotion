@@ -22,7 +22,11 @@ const Submenu = ({ item }) => { //lol level
 
     return (
         <React.Fragment>
-                <SidebarLink className="SidebarLink" to={item.path} >
+        <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} >
+                 
+
+                {showParentSidebar(subnav,item)}
+
                     <div className="openTabIcon" onClick={item.subNav && showShownav}>
                         {item.subNav && subnav
                             ? item.iconOpened
@@ -45,14 +49,44 @@ const Submenu = ({ item }) => { //lol level
                 <SubMenuTab item={item} subnav={subnav}>
                 </SubMenuTab>
             }
-
-        </React.Fragment>
+            </React.Fragment>
     )
 }
 export default Submenu;
 
+//  what is this? your testing things
+
+// const openSettings = () => {
+//     console.log('BUTTON CLICKED');
+// }
+// <div className="SidebarSettings" onClick={openSettings}>
+//                     <HiIcons.HiDotsHorizontal />
+//                      <div className="errorMsg" />  
+//                 </div>
 
 
+
+
+//js functions
+const showParentSidebar = (subnav,item) => {
+    return (
+        <><div>
+                {item.icon}
+                <SidebarLabel>{item.title}</SidebarLabel>
+            </div>
+            <div>
+                {item.subNav && subnav
+                    ? item.iconOpened
+                    : item.subNav
+                        ? item.iconClosed
+                        : ''
+                }
+            </div></>
+            );
+}
+
+
+//css
 export const SidebarLink = styled(Link)`
 position: relative;
 display: flex;
@@ -71,11 +105,9 @@ font-size:18px;
     cursor:pointer;
 }
 `;
-
 export const SidebarLabel = styled.span`
     margin-left:16px;
 `;
-
 export const DropDownLink = styled(Link)`
 background: #343336;
 height: 60px;

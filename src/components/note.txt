@@ -1,19 +1,13 @@
 
-[[problem ]]
--  
-
 [[work histories]]
-- completed navbar tutorial
-- all the old files are in temporaryBin, in case we wanna see old codes.
-- done recursion function
-- got textbox and its btn to work
--
-
-
-[[attemting]]
-- making code to enable open even deep level subpage -done
-- making add new file btn work -
-- separeting menu btn from page card btn -
+- completed navbar tutorial                              -[done]                             
+- all the old files are in temporaryBin, in case we wanna see old codes. -[done]
+- done recursion function                                -[done]
+- got textbox and its btn to work                        -[done]
+- making code to enable open even deep level subpage     -[done]
+- making add new file btn work                           -[done]
+- separeting menu btn from page card btn -gaveUP         -[GaveUp]
+- making routers dynamicly                               -[tryingTo]
 
 
 [[[[recursive function]]]] 
