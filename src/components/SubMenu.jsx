@@ -24,8 +24,7 @@ const Submenu = ({ item }) => { //lol level
         <React.Fragment>
         <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} >
                  
-
-                {showParentSidebar(subnav,item)}
+                {/* {showParentSidebar(subnav,item)} */}
 
                     <div className="openTabIcon" onClick={item.subNav && showShownav}>
                         {item.subNav && subnav
@@ -54,15 +53,6 @@ const Submenu = ({ item }) => { //lol level
 }
 export default Submenu;
 
-//  what is this? your testing things
-
-// const openSettings = () => {
-//     console.log('BUTTON CLICKED');
-// }
-// <div className="SidebarSettings" onClick={openSettings}>
-//                     <HiIcons.HiDotsHorizontal />
-//                      <div className="errorMsg" />  
-//                 </div>
 
 
 
