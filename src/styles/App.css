@@ -10,16 +10,26 @@
   background-color: #3d3d3d;
 }
 
-.TabContainer:hover .SidebarSettings{
+.SidebarLink:hover .SidebarSettings{
   visibility: visible;
 }
 
 
 .SidebarSettings{
-  position: relative;
-  float:right;
-  align-items: center;
+  background-color: #252831;
+  position: absolute;
+  right: 0;
   visibility: hidden;
+}
+
+.openTabIcon{
+  padding: 5px;
+  font-size: 30px;
+}
+
+.settingsBtn, .addBtn{
+  padding: 5px;
+  font-size: 30px;
 }
 
 /* .App-header {

@@ -1,5 +1,6 @@
 import React, { useState, Component } from 'react' //irc + tab
 import * as HiIcons from "react-icons/hi";
+import * as FaIcons from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SubMenuTab from './SubMenuTab';
@@ -12,34 +13,33 @@ const Submenu = ({ item }) => { //lol level
     const showShownav = () => setSubnav(!subnav)
     
     const openSettings = () => {
-        console.log('BUTTON CLICKED');
+        console.log('SETTINGS BUTTON CLICKED');
+    }
+
+    const handleAdd = () => {
+        console.log('ADD BUTTON CLICKED');
     }
 
     return (
         <React.Fragment>
-            <div className="TabContainer">
-                <SidebarLink className="SidebarLink" to={item.path} onClick={item.subNav && showShownav} >
-                <div>
-                    {item.icon}
+                <SidebarLink className="SidebarLink" to={item.path} >
+                    <div className="openTabIcon" onClick={item.subNav && showShownav}>
+                        {item.subNav && subnav
+                            ? item.iconOpened
+                            : item.subNav
+                            ? item.iconClosed
+                            : ''
+                        }
+                    </div>
+                    <div>{item.icon}</div>
                     <SidebarLabel>{item.title}</SidebarLabel>
-                </div>
 
-                <div>
-                    {item.subNav && subnav
-                        ? item.iconOpened
-                        : item.subNav
-                        ? item.iconClosed
-                        : ''
-                    }
-                </div>
-                
+                    <div className="SidebarSettings" >
+                    <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={openSettings}/> 
+                    <FaIcons.FaPlusSquare className="addBtn" onClick={handleAdd}/> 
+                    </div> 
+
                 </SidebarLink>
-                
-                <div className="SidebarSettings" onClick={openSettings}>
-                    <HiIcons.HiDotsHorizontal/> 
-                     {/* <div className="errorMsg" />  */}
-                </div>  
-            </div>
 
             {item.subNav && subnav &&
                 <SubMenuTab item={item} subnav={subnav}>
@@ -54,11 +54,12 @@ export default Submenu;
 
 
 export const SidebarLink = styled(Link)`
+position: relative;
 display: flex;
 color: #e1e9fc;
-justify-content: space-between;
+${'' /* justify-content: space-between; */}
 align-items:center;
-// padding:20px;
+padding:20px;
 list-style:none;
 height:60px;
 text-decoration:none;

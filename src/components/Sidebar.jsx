@@ -9,7 +9,7 @@ import { SidebarLabel, DropDownLink, SidebarLink } from "./SubMenu";
 
 const Sidebar = ({data, handleAdd}) => {
 
-  const [sidebar, setSidebar] = useState(false); //containing datalist
+  const [sidebar, setSidebar] = useState(true); //containing datalist
   const showSidebar = () => setSidebar(!sidebar);
 
   const [sidebarp, setSidebarp] = useState(false); //switch to show/hide textbox
