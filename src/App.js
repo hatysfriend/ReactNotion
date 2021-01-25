@@ -3,7 +3,7 @@ import "./styles/App.css";
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route, StaticRouter } from 'react-router-dom'
 //import { Lol, Lux, LuxR, UltiTime, Ashe, Mf, pageC } from './pages/lol'
-import Overview from "./temporaryBin/pages/Overview";
+import Overview from "./temporaryBin/jsx/pages/Overview";
 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -25,7 +25,7 @@ export default function App() {
         id: "1.1",
         title: "icon1",
         path: "/Overview/icon1",
-        content: () => <div className='lol'>/Overview/icon1</div>,
+        content: ()=><div className='lol'>/Overview/icon1</div>,
         icon: <IoIcons.IoIosPaper />,
       }, {
         title: "icon2",
@@ -146,8 +146,6 @@ const routingLoop = (data) => {
     </>
   );
 }
-
-
 
 
 

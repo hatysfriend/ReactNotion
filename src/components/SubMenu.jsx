@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SubMenuTab from './SubMenuTab';
 import '../styles/App.css'
+import '../styles/SubMenu.css'
 
 
 const Submenu = ({ item }) => { //lol level

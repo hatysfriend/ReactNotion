@@ -20,6 +20,7 @@ const Sidebar = ({ data, handleAdd }) => {
         <Nav>
           <NavIcon to="#">
             <FaIcons.FaBars onClick={showSidebar} />
+            <Link className='helpLink' to='/lol'>lol</Link>
           </NavIcon>
         </Nav>
 
