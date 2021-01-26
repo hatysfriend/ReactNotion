@@ -4,25 +4,41 @@
     top: 50%;
     left:50%;   
     transform: translate(-50%, -50%);
-    background-color:#fff;
-    padding:50px;
   
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center; 
+    align-content:stretch ;
+
+    z-index:1000;
   }
+
+.modalTab{
+    padding: 4px;
+    background-size: 100px, 30px;
+    background-color: blueviolet;
+    /* border-style: solid;
+    border-width: 2px;
+    border-color: rgb(12, 0, 0); */
+    box-shadow: 5px 5px 8px black;
+}
+
+.modalTab:hover{
+  background-color: rgb(159, 65, 247);
+}
+
   .modalContainer{
       position: fixed;
-      z-index:1000;
-      position: fixed;
+      z-index:999;
+      
       top:0;
       left:0;
       right:0;
       bottom:0;
-      background-color: rgba(0,0,0, .7);
+      background-color: rgba(0,0,0,.7);
+
+        
   }
-  .modalCloseBtn{
-    position: fixed;
-    top: 50%;
-    left:50%;   
-    transform: translate(-50%, -50%);
-    background-color:#fff;
-    padding:50px;
-  }
+
+ 
