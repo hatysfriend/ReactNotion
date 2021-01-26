@@ -1,16 +1,19 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express'); //scan express
+const router = express.Router();    //using Router() from express
+
+
+
 
 //getting all 
 router.get('/', (req, res)=>{
-    res.send('hello world');
     console.log('did we get here?')
+    res.send('hello world');
 })
 
 //getting one 
 router.get('/:id', (req, res)=>{
     //req.params.id
-    res.send('hello world: ' + req.params.id);
+    res.send( req.params.id);
 })
 
 //creating one 
@@ -27,5 +30,4 @@ router.patch('/:id', (req, res)=>{
 router.delete('/:id', (req, res)=>{
     
 })
-
-module.exports = router
+module.exports = router            //making the router function export
