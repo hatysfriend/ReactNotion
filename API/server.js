@@ -1,31 +1,39 @@
-//----database & server are prepared
+const express = require('express'); //import package
+const mongoose  = require('mongoose'); 
+const {MONGO_URI} =require('./config');//import connection string
+const postRoutes = require('./routes/api/posts');//Routes
 
-require('dotenv').config() 
+const app = express();//excute package
 
-const express = require('express') //1. scan 'express libraries'
-const app = express()              //2. create app using express()
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, ()=>console.log(`server run at port ${PORT}`));
 
-app.listen(8080, ()=>console.log('server started')) //3.
+//body perser middleware
+app.use(express.json());
 
+//connect to mongoDB
+mongoose.connect(MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true  })
+.then(()=>console.log('MongoDB connected'))
+.catch(err=>console.log(err))
 
-const mongoose = require('mongoose') //scan mongoose
-mongoose.connect(process.env.DATABASE_URL,
-    {useNewUrlParser: true, useUnifiedTopology: true});
-
-
-const db = mongoose.connection               //build mongoose connection variable
-db.on('error', (error)=>console.error(error))   //see log if has error
-db.once('open', ()=>console.log('connected to database'))  //open connection
-
-
-
-//--- making server excepect json file 
-
-app.use(express.json())
-console.log(express.json())
-
-const subscribersRouter = require('./routes/subscribers') //scan subscriber file
-app.use('./subscribers', subscribersRouter)   //set the file to the app
+//user routes
+app.use('/api/posts', postRoutes);
 
 
- 
+
+
+
+//1 import express, mongoose, connectionStringURI, postFunctions, router, modelObj
+//2 creating main app
+//3 connect to the URI
+//4 set router to the app feature
+
+//mongoose
+// - makign connection
+// - create obj's blueprint
+
+//express
+//- can have a set of application features
+//- can hold router
+
+//https:cloud.mongodb.com/v2/60105086c4cf90557a9a3a71#metrics/replicaSet/601051dfea466f43ad5b89fd/explorer/describers/posts/find
