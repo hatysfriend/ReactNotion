@@ -10,13 +10,22 @@
 - making routers dynamicly                               -[in progress]
 - implementing modal to the setting btn                  -[in progress]
 
+- building api project with mongodb                      -[done]
+- getAll api call ,handleAdd, handleDelete function      -[done]
+- passing file path to clipboard                         -[done]
 
-[[[[recursive function]]]] 
+
+
+
+[[[[important ]]]] 
+<recursive function>
 loop({arr}){
     arr.inside.map(a=>{
         a.inside&&<loop arr={a} /> 
     })
 }
+
+useState & useEffect having useState value to trigger
 
 
 

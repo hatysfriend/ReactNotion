@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export const GetAll=()=> {
-   axios
+export  const GetAll=()=> {
+  let resArr = []
+    axios
       .get("http://localhost:5000/api/posts/")
       .then((res) => {
         console.log(res.data);
-        return res.data;
+        resArr= res.data;
+        console.log(resArr)
       })
       .catch((err) => {
         console.log(`GETALL ERROR?: ${err}`);
-        return null
-      });
+      }); 
+      
+      return resArr;
 }
 //useEffect + useState => when useEffect trigged=>useState triggered => re-rendered
 

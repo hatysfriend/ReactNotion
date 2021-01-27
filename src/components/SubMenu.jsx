@@ -7,13 +7,14 @@ import { SidebarLink, SidebarLabel } from './Sidebar';
 import SubMenuTab from './SubMenuTab';
 import Modal from './Modal'
 
-const Submenu = ({ item }) => { //lol level
+const Submenu = ({ item, HandleDelete }) => { //lol level
 
     const [subnav, setSubnav] = useState(false);
-    const showShownav = () => setSubnav(!subnav)
-
-    
     const [isOpen, setIsOpen] = useState(false);
+    const showShownav = () =>{
+        setSubnav(!subnav);
+        console.log('delete menu has been clicked. Id: '+item._id)
+    } 
   
 
     return (
@@ -28,12 +29,14 @@ const Submenu = ({ item }) => { //lol level
 
                 {/*onHover dot-dot*/}
                 <div className="SidebarSettings" >
-                    <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={()=>setIsOpen(true)} />
+                    <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={()=>{
+                        setIsOpen(true);console.log('menu has been clicked. Id: '+item._id);}}/>
+                     
                 </div>
             </SidebarLink>
             
             {/*Settings Modal*/}
-            <Modal open={isOpen} onClose={()=>setIsOpen(false)}> Fancy TM</Modal>
+            <Modal open={isOpen} onClose={()=>setIsOpen(false)} edit_item={item} HandleDelete={HandleDelete}> Fancy TM</Modal>
             
             {/*Child Pages*/}
             {item.subNav && subnav &&

@@ -6,7 +6,7 @@ import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
 
-const Sidebar = ({ data, handleAdd }) => {
+const Sidebar = ({ data, handleAdd,HandleDelete}) => {
 
   const [sidebar, setSidebar] = useState(true); //containing datalist
   const showSidebar = () => setSidebar(!sidebar);
@@ -30,7 +30,7 @@ const Sidebar = ({ data, handleAdd }) => {
             </NavIcon>
 
             {data.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return <SubMenu item={item} key={index} HandleDelete={HandleDelete}/>;
             })}
 
             {AddNewParentFile(showSidebarp, sidebarp, handleAdd)} {/* add btn */}
