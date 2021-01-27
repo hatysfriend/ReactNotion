@@ -1,0 +1,77 @@
+const Datalist = [
+  {
+    id: "1",
+    title: "Overview",
+    path: "/Overview",
+    content: () => <h1 className='lol'>Overview</h1>,
+    icon: <AiIcons.AiFillHome />,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+    subNav: [{
+      id: "1.1",
+      title: "icon1",
+      path: "/Overview/icon1",
+      content: ()=><div className='lol'>/Overview/icon1</div>,
+      icon: <IoIcons.IoIosPaper />,
+    }, {
+      title: "icon2",
+      path: "/Overview/icon2",
+      icon: <FaIcons.FaCartPlus />,
+      content: () => <div className='lol'>/Overview/icon2</div>,
+    }, {
+      title: "icon3",
+      path: "/Overview/icon3",
+      icon: <IoIcons.IoMdPeople />,
+      content: () => <div className='lol'>/Overview/icon3</div>,
+    }, {
+      title: "icon4",
+      path: "/Overview/icon4",
+      icon: <FaIcons.FaEnvelope />,
+      content: () => <div className='lol'>/Overview/icon4</div>,
+    }, {
+      title: "icon5",
+      path: "/Overview/icon5",
+      icon: <IoIcons.IoMdHelpCircle />,
+      content: () => <div className='lol'>/Overview/icon5</div>,
+    },],
+  },
+  {
+    title: "League of Legends",
+    path: "/lol",
+    icon: <AiIcons.AiFillHome />,
+    content: () => <h1 className='lol'>League Of Legends</h1>,
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+    subNav: [{
+      title: "Lux",
+      path: "/lol/lux",
+      icon: <IoIcons.IoIosPaper />,
+      content: () => <h1 className='lol'>League Of Legends/Lux</h1>,
+      iconClosed: <RiIcons.RiArrowDownSFill />,
+      iconOpened: <RiIcons.RiArrowUpSFill />,
+      subNav: [{
+        title: "lux's ulti",
+        path: "/lol/lux/ulti",
+        icon: <IoIcons.IoIosPaper />,
+        content: () => <h1 className='lol'>League Of Legends/lux/ulti</h1>,
+        iconClosed: <RiIcons.RiArrowDownSFill />,
+        iconOpened: <RiIcons.RiArrowUpSFill />,
+        subNav: [{
+          title: "When to use Lux's Ulti",
+          path: "/lol/lux/ulti/when",
+          icon: <IoIcons.IoIosPaper />,
+          content: () => <h1 className='lol'>League Of Legends/lux/ulti/ultiTime</h1>,
+        }]
+      }]
+    }, {
+      title: "Ashe",
+      path: "/lol/ashe",
+      icon: <IoIcons.IoIosPaper />,
+      content: () => <h1 className='lol'>League Of Legends/Ashe</h1>,
+    }, {
+      title: "Miss Fortune",
+      path: "/lol/mf",
+      icon: <IoIcons.IoIosPaper />,
+      content: () => <h1 className='lol'>League Of Legends/Miss Fortune</h1>,
+    },],
+  }]

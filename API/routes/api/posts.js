@@ -3,13 +3,14 @@ const router = express.Router();
 
 //posts model
 const Posts = require('../../Models/Posts');
+const PageModel = require('../../Models/Page')
 
 
 
 //get all posts
 router.get('/', async (req, res) => {
     try {
-        const posts = await Posts.find();
+        const posts = await PageModel.find();
         if (!posts) throw Error('No items');
         res.status(200).json(posts);
 
@@ -21,11 +22,11 @@ router.get('/', async (req, res) => {
 
 //create a post 
 router.post('/', async (req, res) => {
-    const newPost = new Posts(req.body);
+    const newPage = new PageModel(req.body);
     try {
-        const post = await newPost.save();
-        if (!post) throw Error('something went wrong while saving the post ');
-        res.status(200).json(post);
+        const page = await newPage.save();
+        if (!page) throw Error('something went wrong while saving the post ');
+        res.status(200).json(page);
 
     } catch (err) {
         res.status(400).json({ msg: err })
@@ -35,7 +36,7 @@ router.post('/', async (req, res) => {
 //delete a post 
 router.delete('/:id', async (req, res) => {
     try {
-        const post = await Posts.findByIdAndDelete(req.params.id);
+        const post = await PageModel.findByIdAndDelete(req.params.id);
         if (!post) throw Error('No selected item found');
         res.status(200).json({ success: true });
 
@@ -47,7 +48,7 @@ router.delete('/:id', async (req, res) => {
 //update a post 
 router.patch('/:id', async (req, res) => {
     try {
-        const post = await Posts.findByIdAndUpdate(req.params.id, req.body);
+        const post = await PageModel.findByIdAndUpdate(req.params.id, req.body);
         if (!post) throw Error('something went wrong while updating the post');
         res.status(200).json({ success: true });
 
@@ -60,7 +61,7 @@ router.patch('/:id', async (req, res) => {
 //get a post
 router.get('/:id', async (req, res) => {
     try {
-        const post = await Posts.findById(req.params.id);
+        const post = await PageModel.findById(req.params.id);
         if (!post) throw Error('something went wrong while updating the post');
         res.status(200).json(post);
 

@@ -2,8 +2,11 @@ const express = require('express'); //import package
 const mongoose  = require('mongoose'); 
 const {MONGO_URI} =require('./config');//import connection string
 const postRoutes = require('./routes/api/posts');//Routes
+const cors = require('cors'); //allows this server.js to be accessed by outside
+
 
 const app = express();//excute package
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>console.log(`server run at port ${PORT}`));
@@ -23,7 +26,7 @@ app.use('/api/posts', postRoutes);
 
 
 
-//1 import express, mongoose, connectionStringURI, postFunctions, router, modelObj
+//1 import express, mongoose, connectionStringURI, postFunctions, router, modelObj, cors
 //2 creating main app
 //3 connect to the URI
 //4 set router to the app feature
