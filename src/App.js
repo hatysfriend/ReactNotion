@@ -2,16 +2,21 @@ import React, { useState, useEffect, Component, setState } from 'react';
 import "./styles/App.css";
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import PageConent from './components/PageContent'
+
+//not used 
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
 import { GetAll } from './API'
 import Modal from './components/Modal'
+
 import axios from "axios";
 
 //function component 
 export default function App() {
+  
   const [data, setData] = useState([]);
 
     useEffect(() => { //get All
@@ -27,18 +32,18 @@ export default function App() {
 
 
   //route loop for parent page
-  // routingLoop = () => {
-  //   return (
-  //     <>
-  //       <Route path='/' exact component={() => <div className='lol'><h1>default page</h1></div>} />
+   function routingLoop(){
+    return (
+      <>
+        <Route path='/' exact component={() => <div className='lol'><h1>default page</h1></div>} />
 
-  //       {data.map((item) => {
-  //         //let Pagefunc = eval(item.content)
-  //         //return (<Route key={item.path} path={item.path} exact component={Pagefunc} />);
-  //       })}
-  //     </>
-  //   );
-  // }
+        {data.map((item) => {
+          // let Pagefunc = eval(item.content)
+          return (<Route key={item.path} path={item.path} exact component={()=>PageConent(item)} />);
+        })}
+      </>
+    );
+  }
 
   //-----------------------[add]------------------------------------------------
 
@@ -59,8 +64,7 @@ export default function App() {
             title: value,
             path: '/' + value,
             icon: <AiIcons.AiFillHome />,
-            subNav: [],
-            content: () => <div className='lol'>{value}</div>
+            content: [{div:'default'}]
           }
         );
         await HandleAdd_API(value, arr);
@@ -73,6 +77,7 @@ export default function App() {
     const obj = {
       title: value,
       path: '/' + value,
+      content: [{div:'default'}]
     };
     axios
       .post("http://localhost:5000/api/posts/", obj)
@@ -118,10 +123,10 @@ export default function App() {
   return (
     <div className="App">
       <Router>
-        <Sidebar data={data} handleAdd={HandleAdd_useState} HandleDelete={HandleDelete_useState}  />
+         <Sidebar data={data} handleAdd={HandleAdd_useState} HandleDelete={HandleDelete_useState}  />{/*  <-- page */}
         
         <Switch>
-          {/* {routingLoop()} */}
+          {routingLoop()}
         </Switch>
       </Router>
     </div>

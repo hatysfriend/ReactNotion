@@ -13,6 +13,11 @@ const PostSchema = new Schema({
     date:{
         type:Date,
         default:Date.now,
+    },
+    content:{
+        type:Array,
+        default: [{array:'defalt'}]
+
     }
 
 });

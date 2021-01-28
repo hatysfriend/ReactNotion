@@ -15,12 +15,12 @@ const PageSchema = new Schema({
         default: null
     },
     content:{
-        type:String,
-        default:'()=><div className=lol></div>'
+        type:Array,
+        default: null
     },
     subNav:{
         type:Array,
-        default:[]
+        default:null
     }
 
 });

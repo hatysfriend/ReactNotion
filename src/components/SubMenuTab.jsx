@@ -12,7 +12,7 @@ const SubMenuTab = ({ item, subnav }) => {
         return (
           <React.Fragment>
             <DropDownLink to={item.path} key={index} onClick={item.subNav && showShownav2}>
-            
+    
             <div className="openTabIcon">
                 {item.subNav && subnav2
                   ? item.iconOpened

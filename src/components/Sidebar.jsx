@@ -6,34 +6,35 @@ import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
 
-const Sidebar = ({ data, handleAdd,HandleDelete}) => {
+const Sidebar = ({ data, handleAdd, HandleDelete }) => {
 
-  const [sidebar, setSidebar] = useState(true); //containing datalist
+  const [sidebar, setSidebar] = useState(true); // show/hide sidebar
   const showSidebar = () => setSidebar(!sidebar);
-  const [sidebarp, setSidebarp] = useState(false); //switch to show/hide textbox
+  const [sidebarp, setSidebarp] = useState(false); //show/hide textbox
   const showSidebarp = () => setSidebarp(!sidebarp);
 
   return (
     <>
-      <IconContext.Provider value={{ color: "yellow" }}>
-        <Nav>
-          <NavIcon to="#">
-            <FaIcons.FaBars onClick={showSidebar} />
-            <Link className='helpLink' to='/lol'>lol</Link>
-          </NavIcon>
-        </Nav>
+      <IconContext.Provider value={{ color: "green" }}>
 
+        {/* top bar content */}
+        {top_bar(showSidebar)}
+
+        {/* hide_sidebar_icon */}
         <SidebarNav sidebar={sidebar}>
           <SidebarWrap>
             <NavIcon to="#">
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
 
+            {/* actual tab for data */}
             {data.map((item, index) => {
-              return <SubMenu item={item} key={index} HandleDelete={HandleDelete}/>;
+              return <SubMenu item={item} key={index} HandleDelete={HandleDelete} />;
             })}
 
-            {AddNewParentFile(showSidebarp, sidebarp, handleAdd)} {/* add btn */}
+
+            {/* add new button */}
+            {AddNewParentFile(showSidebarp, sidebarp, handleAdd)}
 
           </SidebarWrap>
         </SidebarNav>
@@ -44,7 +45,21 @@ const Sidebar = ({ data, handleAdd,HandleDelete}) => {
 export default Sidebar;
 
 
-//JS functions
+
+
+//top bar 
+export const top_bar = (showSidebar) => {
+ //plan to contain menu link, or back button or something here
+
+  return (<>
+    <Nav>
+      <NavIcon to="#">
+        <FaIcons.FaBars onClick={showSidebar} />
+        <Link className='helpLink' to='/lol'>lol</Link>
+      </NavIcon>
+    </Nav></>);
+}
+
 //Description: Adds a new Sidebar Tab
 export const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
   return (<>
@@ -66,7 +81,6 @@ export const AddNewParentFile = (showSidebarp, sidebarp, handleAdd) => {
 }
 
 
-// css
 
 
 
@@ -108,7 +122,7 @@ export const SidebarWrap = styled.nav`
 `;
 
 //css
- 
+
 export const SidebarLink = styled(Link)`
 position: relative;
 display: flex;
