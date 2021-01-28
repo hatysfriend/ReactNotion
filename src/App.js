@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component, setState } from 'react';
 import "./styles/App.css";
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import PageConent from './components/PageContent'
+import PageContent from './components/PageContent'
 
 //not used 
 import * as FaIcons from "react-icons/fa";
@@ -30,17 +30,23 @@ export default function App() {
       });
   }, [data])
 
-
+  
   //route loop for parent page
    function routingLoop(){
     return (
       <>
-        <Route path='/' exact component={() => <div className='lol'><h1>default page</h1></div>} />
+      <Switch>
+        {/* <Route path='/' component={() => <div className='lol'><h1>default page</h1></div>} /> */}
+      
+        
 
         {data.map((item) => {
-          // let Pagefunc = eval(item.content)
-          return (<Route key={item.path} path={item.path} exact component={()=>PageConent(item)} />);
+          return (
+               <Route key={item.path} path={item.path} 
+               Component={<div className='lol'>{()=><PageContent  item={item}/>}</div>} /> 
+              );
         })}
+        </Switch>
       </>
     );
   }
@@ -125,9 +131,9 @@ export default function App() {
       <Router>
          <Sidebar data={data} handleAdd={HandleAdd_useState} HandleDelete={HandleDelete_useState}  />{/*  <-- page */}
         
-        <Switch>
+        {/* <Switch> */}
           {routingLoop()}
-        </Switch>
+        {/* </Switch> */}
       </Router>
     </div>
   )

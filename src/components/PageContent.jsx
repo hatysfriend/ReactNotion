@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export default function PageContect(item) {
+export default function PageContent({item}) {
 
 
     // inside item content is like [['div','text1'],['a','text2'],['h1','text3']]
@@ -29,7 +29,7 @@ export default function PageContect(item) {
         console.log(JSON.stringify(item.content))
         let para = document.createElement(item.content[count][0]);  //1. new tag
         para.innerHTML = item.content[count][1]
-        let addDiv = document.getElementById(item.title);  //4. place to add
+        let addDiv = document.getElementById(item._id);  //4. place to add
         document.body.appendChild(para, addDiv)
         setCount(count+1)
 
@@ -38,9 +38,8 @@ export default function PageContect(item) {
 
     return (
         <div>
-            <div className={item.title} id={item.title}>
-                <div>a</div>
-                {newLine()}
+            <div className={item.title} id={item._id}>
+                <div>title :{item.title}</div>
                 {item.content && count < length && newLine()}
             </div>
         </div>
