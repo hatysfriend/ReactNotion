@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
+import {Sidebar_Loops} from '../Utilities/Loops'
 
-const Sidebar = ({ data, handleAdd, HandleDelete }) => {
+const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) => {
 
   const [sidebar, setSidebar] = useState(true); // show/hide sidebar
   const showSidebar = () => setSidebar(!sidebar);
@@ -27,14 +27,23 @@ const Sidebar = ({ data, handleAdd, HandleDelete }) => {
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
 
-            {/* actual tab for data */}
-            {data.map((item, index) => {
-              return <SubMenu item={item} key={index} HandleDelete={HandleDelete} />;
-            })}
+            
+            
+            {/* //{Sidebar_Loops(item, HandleDelete)} */}
+            {data.map((item, key) => {
+              let ArrIndexTrack = ''+key+''
+              return (<Sidebar_Loops key={item.path} item={item} HandleDelete={HandleDelete} HandleAddChild={HandleAddChild}
+               subnav={false} arrCount={0} ArrIndexTrack={ArrIndexTrack} HandleUpdate={HandleUpdate}/>);
+            }
+      
+            )}
 
 
             {/* add new button */}
             {AddNewParentFile(showSidebarp, sidebarp, handleAdd)}
+
+            {/* update_testing btn */}
+            {/* <button onClick={HandleUpdate}>UPDATE</button> */}
 
           </SidebarWrap>
         </SidebarNav>

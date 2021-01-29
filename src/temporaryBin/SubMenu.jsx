@@ -3,9 +3,9 @@ import * as HiIcons from "react-icons/hi";
 import * as AiIcons from "react-icons/ai";
 import '../styles/App.css';
 import '../styles/SubMenu.css';
-import { SidebarLink, SidebarLabel } from './Sidebar';
+import { SidebarLink, SidebarLabel } from '../components/Sidebar';
 import SubMenuTab from './SubMenuTab';
-import Modal from './Modal'
+import Modal from '../components/Modal'
 import * as RiIcons from "react-icons/ri";
 
 const Submenu = ({ item, HandleDelete }) => { //lol level
@@ -14,8 +14,8 @@ const Submenu = ({ item, HandleDelete }) => { //lol level
     const [isOpen, setIsOpen] = useState(false);
     const showShownav = () =>{
         setSubnav(!subnav);
-        console.log('delete menu has been clicked. Id: '+item._id)
-    } 
+        console.log('delete menu has been clicked. Id: '+item._id) } 
+   
   
 
     return (

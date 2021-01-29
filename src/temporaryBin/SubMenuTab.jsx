@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SidebarLabel, DropDownLink } from './Sidebar'
+import { SidebarLabel, DropDownLink } from '../components/Sidebar'
 
 const SubMenuTab = ({ item, subnav }) => {
 

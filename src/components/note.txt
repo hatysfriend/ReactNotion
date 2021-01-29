@@ -14,6 +14,17 @@
 - getAll api call ,handleAdd, handleDelete function      -[done]
 - passing file path to clipboard                         -[done]
 
+- moving client-side API calls to API component.jsx      -[done]
+- convining submenu.jsx and submenuTab.jsx               -[done]
+- implementing rename(api_update) function               -[done]
+- implementing add_child_page function                   -[in progress]
+
+
+
+[[things to be fixed]]
+- change the name , but not changing the like path yet.
+-  want fexed size modal
+
 
 
 
