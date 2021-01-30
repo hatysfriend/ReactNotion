@@ -9,7 +9,7 @@ import * as IoIcons from "react-icons/io";
 import Modal from '../components/Modal'
 import * as RiIcons from "react-icons/ri";
 
-export const Sidebar_Loops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexTrack,HandleUpdate,HandleAddChild }) => {
+export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexTrack,HandleUpdate,HandleAddChild }) => {
     const [subnav, setSubnav] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const showShownav = () => {
@@ -20,13 +20,13 @@ export const Sidebar_Loops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexT
         return (
             <>{/* main_icon */}
                 <div onClick={item.subNav && showShownav}>
-                    {arrCount == 0 ? <AiIcons.AiFillHome /> : <IoIcons.IoIosPaper />}
+                    {arrCount === 0 ? <AiIcons.AiFillHome /> : <IoIcons.IoIosPaper />}
 
                     {/* item's title */}
                     <SidebarLabel>{item.title}</SidebarLabel>
 
                     {/* arrow_icon */}
-                    {item.subNav[0] && subnav
+                    {item.subNav && subnav
                         ? <RiIcons.RiArrowUpSFill />
                         : item.subNav
                             ? <RiIcons.RiArrowDownSFill />
@@ -64,12 +64,12 @@ export const Sidebar_Loops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexT
             HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}></Modal>
 
             {/*Child Pages*/}
-            {item.subNav[0] && subnav &&
+            {item.subNav && subnav &&
                 item.subNav.map((item, key) => {
                     ArrIndexTrack = ArrIndexTrack + '.' + key
 
                     return (
-                        <Sidebar_Loops item={item} subnav1={subnav} HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}
+                        <SidebarLoops item={item} subnav1={subnav} HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}
                             HandleDelete={HandleDelete} arrCount={arrCount + 1} ArrIndexTrack={ArrIndexTrack} />
                     );
                 }

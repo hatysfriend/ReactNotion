@@ -89,7 +89,7 @@ export const Delete_API = (id) => {
 //update 1
 export const Update_useState = (data, id, value) => {
   const arr = [...data];
-  let found = arr.find((page) => { return page._id = id; }) //find obj
+  let found = arr.find((page) => { return page._id === id; }) //find obj
   let index = arr.indexOf(found)                           //find index of the obj
   arr.splice(index, 1);
   found.title = value
@@ -119,7 +119,8 @@ export const Update_API = (id, value) => {
 //add_child 1
 export const AddChild_useState = (data, value, id) => {
   const arr = [...data];
-  let found = arr.find((page) => { return page._id = id; }) //find obj
+  let found = arr.find((page) => {
+     return page._id === id; }) //find obj
   let index = arr.indexOf(found)                           //find index of the obj
   arr.splice(index, 1);
   found.subNav.push(
@@ -128,23 +129,17 @@ export const AddChild_useState = (data, value, id) => {
       title: value,
       body: 'PATCH UPDATE Api',
       date: Date.now(),
+      path:found.path+'/'+value
     })
   arr.push(found)
-  console.log(JSON.stringify(arr))
   return arr;
 }
 
 //add_child 2
 export const AddChild_API = (data, value, id) => {
+  console.log(value)
   const arr = [...data];
-  let found = arr.find((page) => { return page._id = id; }) //find obj
-  const obj = {
-    _id:'1121221',
-    title: value,
-    body: 'PATCH UPDATE Api',
-    date: Date.now()
-  };
-  found.subNav.push(obj);
+  let found = arr.find((page) => { return page._id === id; }) 
 
   axios
     .patch("http://localhost:5000/api/posts/" + id, found)

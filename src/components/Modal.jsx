@@ -27,6 +27,7 @@ export default function Modal({ open, children, onClose, edit_item, HandleDelete
         onClose();
     }
     const addnewpage = () => {
+        console.log(edit_item._id)
         HandleAddChild(edit_item._id,document.getElementById('newpagetxt').value)
         onClose();
     }

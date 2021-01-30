@@ -4,7 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import styled from "styled-components";
-import {Sidebar_Loops} from '../Utilities/Loops'
+import {SidebarLoops} from '../Utilities/Loops'
 
 const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) => {
 
@@ -32,7 +32,7 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
             {/* //{Sidebar_Loops(item, HandleDelete)} */}
             {data.map((item, key) => {
               let ArrIndexTrack = ''+key+''
-              return (<Sidebar_Loops key={item.path} item={item} HandleDelete={HandleDelete} HandleAddChild={HandleAddChild}
+              return (<SidebarLoops key={item.path} item={item} HandleDelete={HandleDelete} HandleAddChild={HandleAddChild}
                subnav={false} arrCount={0} ArrIndexTrack={ArrIndexTrack} HandleUpdate={HandleUpdate}/>);
             }
       
@@ -41,9 +41,6 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
 
             {/* add new button */}
             {AddNewParentFile(showSidebarp, sidebarp, handleAdd)}
-
-            {/* update_testing btn */}
-            {/* <button onClick={HandleUpdate}>UPDATE</button> */}
 
           </SidebarWrap>
         </SidebarNav>

@@ -4,13 +4,9 @@ const Schema = mongoose.Schema;
 const PageSchema = new Schema({
     title:{
         type:String,
-        required:true
+        default: null
     },
     path:{
-        type:String,
-        required:true
-    },
-    icon:{
         type:String,
         default: null
     },

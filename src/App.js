@@ -34,7 +34,7 @@ export default function App() {
   function HandleAddChild(id, value) {
     console.log(value)
      const newArr= AddChild_useState(data,value,id)
-     let bool = AddChild_API(data,value, id);
+     let bool = AddChild_API(data, value, id);
     bool && setData(newArr)
   }
   //delete_page function
