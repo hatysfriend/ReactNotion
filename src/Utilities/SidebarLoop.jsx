@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 import * as HiIcons from "react-icons/hi";
 import * as AiIcons from "react-icons/ai";
 import '../styles/App.css';
-import '../styles/SubMenu.css';
 import { SidebarLink, SidebarLabel } from '../components/Sidebar';//, DropDownLink
 import * as IoIcons from "react-icons/io";
 
 import Modal from '../components/Modal'
 import * as RiIcons from "react-icons/ri";
 
-export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexTrack,HandleUpdate,HandleAddChild }) => {
+export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount,HandleUpdate,HandleAddChild,ArrIndexTrack }) => {
     const [subnav, setSubnav] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const showShownav = () => {
         setSubnav(!subnav)
     }
+    let count=0;
 
     function mainContent() {
         return (
@@ -37,7 +37,6 @@ export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexTr
                     <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={() => {
                         setIsOpen(true);
                         console.log('menu has been clicked. Id: ' + item._id);
-                        console.log('ArrIndexTrack :' + ArrIndexTrack);
                     }} /></div>
             </>
         );
@@ -61,16 +60,17 @@ export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount, ArrIndexTr
 
             {/*Settings Modal*/}
             <Modal open={isOpen} onClose={() => setIsOpen(false)} edit_item={item} HandleDelete={HandleDelete} 
-            HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}></Modal>
+            HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild} ArrIndexTrack={ArrIndexTrack}></Modal>
 
             {/*Child Pages*/}
             {item.subNav && subnav &&
                 item.subNav.map((item, key) => {
-                    ArrIndexTrack = ArrIndexTrack + '.' + key
+                    let ArrIndexTrackStr = ArrIndexTrack+'.'+(key+count)
+                    
 
                     return (
                         <SidebarLoops item={item} subnav1={subnav} HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}
-                            HandleDelete={HandleDelete} arrCount={arrCount + 1} ArrIndexTrack={ArrIndexTrack} />
+                            HandleDelete={HandleDelete} arrCount={arrCount + 1} ArrIndexTrack={ArrIndexTrackStr} />
                     );
                 }
                 )}

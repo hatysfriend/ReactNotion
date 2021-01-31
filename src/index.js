@@ -7,7 +7,6 @@ ReactDOM.render(
   
   <React.StrictMode>
     <App init={init}/>
-    {/* <API/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

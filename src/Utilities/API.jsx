@@ -14,10 +14,8 @@ export const GetAll_API = () => {
     })
 }
 
-
-//add 1
+//add parent 1
 export const Add_useState = (value, data) => {
-
   let arr = [...data];
   if (value === "" || value === null) {
     // document.getElementById('errorMsg').innerHTML = 'Invalid File Name';
@@ -31,24 +29,20 @@ export const Add_useState = (value, data) => {
         {
           title: value,
           path: '/' + value,
-          icon: '<AiIcons.AiFillHome />',
           content: [{ div: 'default' }]
         }
       );
       return arr;
-    }
-  }
+    }}
 }
 
-//add 2
+//add parent 2
 export const Add_API = (value) => {
-
   const obj = {
     title: value,
     path: '/' + value,
     content: [{ div: 'default' }]
   };
-
   axios
     .post("http://localhost:5000/api/posts/", obj)
     .then((res) => {
@@ -68,7 +62,6 @@ export const Delete_useState = (id, data) => {
   let index = arr.indexOf(found)                           //find index of the obj
   arr.splice(index, 1);
   return arr;
-
 }
 
 //delate 2
@@ -95,8 +88,8 @@ export const Update_useState = (data, id, value) => {
   found.title = value
   arr.push(found)
   return arr;
-
 }
+
 //update 2
 export const Update_API = (id, value) => {
   const obj = {
@@ -104,7 +97,6 @@ export const Update_API = (id, value) => {
     body: 'PATCH UPDATE Api',
     date: Date.now()
   };
-
   axios
     .patch("http://localhost:5000/api/posts/" + id, obj)
     .then((res) => {
@@ -117,15 +109,16 @@ export const Update_API = (id, value) => {
 }
 
 //add_child 1
-export const AddChild_useState = (data, value, id) => {
+export const AddChild_useState = (data, value, id,ArrIndexTrack) => {
   const arr = [...data];
   let found = arr.find((page) => {
      return page._id === id; }) //find obj
   let index = arr.indexOf(found)                           //find index of the obj
   arr.splice(index, 1);
+  let newId = '' + Math.random().toString(36).substr(2, 16);
   found.subNav.push(
     {
-      _id: '1121221',
+      _id: newId,
       title: value,
       body: 'PATCH UPDATE Api',
       date: Date.now(),

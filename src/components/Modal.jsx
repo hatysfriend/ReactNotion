@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import ReactDom from 'react-dom';
 import * as RiIcons from "react-icons/ri";
 import '../styles/Modal.css'
-
 // not used 
 // import { EjectFill } from 'react-bootstrap-icons';
 // import styled from "styled-components";
 
 
-export default function Modal({ open, children, onClose, edit_item, HandleDelete, HandleUpdate, HandleAddChild }) {
+export default function Modal({ open, children, onClose, edit_item, HandleDelete, HandleUpdate, HandleAddChild, ArrIndexTrack }) {
 
     const [showInputAdd, setShowInputAdd] = useState(false);
     const [showInput2, setShowInput2] = useState(false); //for rename now
@@ -28,10 +27,9 @@ export default function Modal({ open, children, onClose, edit_item, HandleDelete
     }
     const addnewpage = () => {
         console.log(edit_item._id)
-        HandleAddChild(edit_item._id,document.getElementById('newpagetxt').value)
+        HandleAddChild(edit_item._id, document.getElementById('newpagetxt').value, ArrIndexTrack)
         onClose();
     }
-
 
     return ReactDom.createPortal(
         <div >
@@ -57,7 +55,6 @@ export default function Modal({ open, children, onClose, edit_item, HandleDelete
             </div>
         </div>,
         document.getElementById('portal')
-
     )
 }
 

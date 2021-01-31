@@ -1,10 +1,12 @@
-import React, { useState, useEffect, Component, setState } from 'react';
+import React, { useState, useEffect} from 'react';
 import "./styles/App.css";
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PageContent from './components/PageContent'
-import { Add_useState, Add_API, Delete_useState, Delete_API, GetAll_API,
-  Update_useState,Update_API,AddChild_useState,AddChild_API} from './Utilities/API';
+import {
+  Add_useState, Add_API, Delete_useState, Delete_API, GetAll_API,
+  Update_useState, Update_API, AddChild_useState, AddChild_API
+} from './Utilities/API';
 import axios from "axios";
 
 //function component 
@@ -14,15 +16,15 @@ export default function App() {
 
   useEffect(() => {
     axios
-    .get("http://localhost:5000/api/posts/")
-    .then((res) => {
-      setData(res.data)
-    })
-    .catch((err) => {
-      console.log(`GETALL ERROR?: ${err}`);
-    })
+      .get("http://localhost:5000/api/posts/")
+      .then((res) => {
+        setData(res.data)
+      })
+      .catch((err) => {
+        console.log(`GETALL ERROR?: ${err}`);
+      })
     // GetAll_API() && setData(GetAll_API());
-   }, [data])
+  }, [data])
 
   //add_new function
   function HandleAdd(value) {
@@ -31,10 +33,10 @@ export default function App() {
     bool && setData(newArr)
   }
   //add_new_inside function
-  function HandleAddChild(id, value) {
+  function HandleAddChild(id, value, ArrIndexTrack) {
     console.log(value)
-     const newArr= AddChild_useState(data,value,id)
-     let bool = AddChild_API(data, value, id);
+    const newArr = AddChild_useState(data, value, id, ArrIndexTrack)
+    let bool = AddChild_API(data, value, id);
     bool && setData(newArr)
   }
   //delete_page function
@@ -44,40 +46,37 @@ export default function App() {
     bool && setData(newArr)
   }
   //update_page function
-  const HandleUpdate = (id,value) => {
-    let newArr = Update_useState(data,id,value)
-    let bool = Update_API(id,value)
+  const HandleUpdate = (id, value) => {
+    let newArr = Update_useState(data, id, value)
+    let bool = Update_API(id, value)
     bool && setData(newArr)
   }
 
-  
 
-  
+
+
   //route loop for parent page
   function routingLoop() {
     return (
-      <>
-        <Switch>
-          <Route path='/' component={() => <div className='lol'><h1>default page</h1></div>} />
-
-          {data.map((item) => {
-            return (
-              <Route key={item.path} path={item.path}
-                render={() => <PageContent item={item} />} />
-            );
-          })}
-        </Switch>
-      </>
+      <><Switch>
+        <Route path='/' component={() => <div className='lol'><h1>default page</h1></div>} />
+        {data.map((item) => {
+          return (
+            <Route key={item.path} path={item.path}
+              render={() => <PageContent item={item} />} />
+          );
+        })}
+      </Switch></>
     );
   }
 
 
- //render
+  //render
   return (
     <div className="App">
       <Router>
-        <Sidebar data={data} handleAdd={HandleAdd} HandleDelete={HandleDelete} 
-        HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}/>
+        <Sidebar data={data} handleAdd={HandleAdd} HandleDelete={HandleDelete}
+          HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild} />
         {routingLoop()}
       </Router>
     </div>
