@@ -12,6 +12,7 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
   const showSidebar = () => setSidebar(!sidebar);
   const [sidebarp, setSidebarp] = useState(false); //show/hide textbox
   const showSidebarp = () => setSidebarp(!sidebarp);
+  let ArrIndexTrack = [];
 
   return (
     <>
@@ -29,7 +30,8 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
             
             {/* //{Sidebar_Loops(item, HandleDelete)} */}
             {data.map((item, key) => {
-              let ArrIndexTrack = ''+key+''
+              ArrIndexTrack = []
+              ArrIndexTrack.push(key)
               return (<SidebarLoops key={item.path} item={item} HandleDelete={HandleDelete} HandleAddChild={HandleAddChild}
                subnav={false} arrCount={0} ArrIndexTrack={ArrIndexTrack} HandleUpdate={HandleUpdate}/>);
             } )}
