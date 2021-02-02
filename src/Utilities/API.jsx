@@ -153,3 +153,18 @@ export const AddChild_API = (data, value, id) => {
 //             date: Date.now()
 //         };
 //    
+// export const Delete_useState = (id, data) => {
+//   const arr = [...data];
+//   arr.subNav.map(page=>{
+//     if(page._id ===id){
+
+//     }
+//     else{
+//       loop(page)
+//     }
+//   })
+// }
+// export const loop=(page)=>{
+//   let 
+
+// }
