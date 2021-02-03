@@ -12,6 +12,7 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
   const showSidebar = () => setSidebar(!sidebar);
   const [sidebarp, setSidebarp] = useState(false); //show/hide textbox
   const showSidebarp = () => setSidebarp(!sidebarp);
+  let ArrIndexTrack = [];
 
   let ArrIndexTrack = [];
 
@@ -33,7 +34,6 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
             {data.map((item, key) => {
               ArrIndexTrack = []
               ArrIndexTrack.push(key)
-              
               return (<SidebarLoops key={item.path} item={item} HandleDelete={HandleDelete} HandleAddChild={HandleAddChild}
                subnav={false} ArrIndexTrack={ArrIndexTrack} HandleUpdate={HandleUpdate}/>);
             } )}

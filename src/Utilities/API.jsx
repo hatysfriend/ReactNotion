@@ -211,3 +211,27 @@ export const AddChild_API = (newArr, ArrIndexTrack) => {
       return false;
     });
 }
+
+//update
+// useEffect(()=>{
+//   const obj = {
+//             title:'UDPATE this Object!!',
+//             body:'PATCH UPDATE Api',
+//             date: Date.now()
+//         };
+//    
+// export const Delete_useState = (id, data) => {
+//   const arr = [...data];
+//   arr.subNav.map(page=>{
+//     if(page._id ===id){
+
+//     }
+//     else{
+//       loop(page)
+//     }
+//   })
+// }
+// export const loop=(page)=>{
+//   let 
+
+// }

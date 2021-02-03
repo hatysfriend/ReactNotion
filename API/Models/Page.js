@@ -18,6 +18,5 @@ const PageSchema = new Schema({
         type:Array,
         default:null
     }
-
 });
 module.exports = mongoose.model('Page', PageSchema);
