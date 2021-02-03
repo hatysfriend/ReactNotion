@@ -14,21 +14,25 @@ export default function Modal({ open, children, onClose, edit_item, HandleDelete
     if (!open) return null
 
     const deletePage = () => {
-        HandleDelete(edit_item._id);
+        HandleDelete(ArrIndexTrack);
         onClose();//function to close this
+        setShowInputAdd(!showInputAdd)
     }
     const copyLink = () => {
         navigator.clipboard.writeText('http://localhost:3000' + edit_item.path);
         onClose();
+        setShowInputAdd(!showInputAdd)
     }
     const rename = () => {
         HandleUpdate(edit_item._id, document.getElementById('renametxt').value)
         onClose();
+        setShowInputAdd(!showInputAdd)
     }
     const addnewpage = () => {
         console.log(edit_item._id)
-        HandleAddChild(edit_item._id, document.getElementById('newpagetxt').value, ArrIndexTrack)
+        HandleAddChild( document.getElementById('newpagetxt').value, ArrIndexTrack)
         onClose();
+        setShowInputAdd(!showInputAdd)
     }
 
     return ReactDom.createPortal(
@@ -49,7 +53,7 @@ export default function Modal({ open, children, onClose, edit_item, HandleDelete
                     onClick={rename} /></div>}
 
                 {/* add new file */}
-                <div className='modalTab' onClick={() => setShowInputAdd(!showInputAdd)}><RiIcons.RiFileAddLine color="black" />New File</div>
+                {ArrIndexTrack.length!==4&&<div className='modalTab' onClick={() => setShowInputAdd(!showInputAdd)}><RiIcons.RiFileAddLine color="black" />New File</div>}
                 {showInputAdd && <div className='modalTab'><input id='newpagetxt'></input><RiIcons.RiFileAddLine color="black"
                     onClick={addnewpage} /></div>}
             </div>

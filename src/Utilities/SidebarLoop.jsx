@@ -8,7 +8,7 @@ import * as IoIcons from "react-icons/io";
 import Modal from '../components/Modal'
 import * as RiIcons from "react-icons/ri";
 
-export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount,HandleUpdate,HandleAddChild,ArrIndexTrack }) => {
+export const SidebarLoops = ({ item, HandleDelete, subnav1,HandleUpdate,HandleAddChild,ArrIndexTrack }) => {
     const [subnav, setSubnav] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const showShownav = () => {
@@ -20,13 +20,13 @@ export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount,HandleUpdat
         return (
             <>{/* main_icon */}
                 <div onClick={item.subNav && showShownav}>
-                    {arrCount === 0 ? <AiIcons.AiFillHome /> : <IoIcons.IoIosPaper />}
+                    {ArrIndexTrack.length == 1 ? <AiIcons.AiFillHome /> : <IoIcons.IoIosPaper />}
 
                     {/* item's title */}
                     <SidebarLabel>{item.title}</SidebarLabel>
 
                     {/* arrow_icon */}
-                    {item.subNav && subnav
+                    {item.subNav!==null && subnav
                         ? <RiIcons.RiArrowUpSFill />
                         : item.subNav
                             ? <RiIcons.RiArrowDownSFill />
@@ -36,7 +36,7 @@ export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount,HandleUpdat
                 <div className="SidebarSettings" >
                     <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={() => {
                         setIsOpen(true);
-                        console.log('menu has been clicked. Id: ' + item._id);
+                        console.log(ArrIndexTrack);
                     }} /></div>
             </>
         );
@@ -62,15 +62,14 @@ export const SidebarLoops = ({ item, HandleDelete, subnav1, arrCount,HandleUpdat
             <Modal open={isOpen} onClose={() => setIsOpen(false)} edit_item={item} HandleDelete={HandleDelete} 
             HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild} ArrIndexTrack={ArrIndexTrack}></Modal>
 
-            {/*Child Pages*/}
-            {item.subNav && subnav &&
+            {/*Pages*/}
+            {item.subNav!==null && subnav &&
                 item.subNav.map((item, key) => {
-                    let ArrIndexTrackStr = ArrIndexTrack+'.'+(key+count)
-                    
-
+                    let ArrIndexTrack2 = [...ArrIndexTrack]
+                    ArrIndexTrack2.push(key)
                     return (
                         <SidebarLoops item={item} subnav1={subnav} HandleUpdate={HandleUpdate} HandleAddChild={HandleAddChild}
-                            HandleDelete={HandleDelete} arrCount={arrCount + 1} ArrIndexTrack={ArrIndexTrackStr} />
+                            HandleDelete={HandleDelete}  ArrIndexTrack={ArrIndexTrack2} />
                     );
                 }
                 )}

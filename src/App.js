@@ -33,16 +33,16 @@ export default function App() {
     bool && setData(newArr)
   }
   //add_new_inside function
-  function HandleAddChild(id, value, ArrIndexTrack) {
+  function HandleAddChild( value, ArrIndexTrack) {
     console.log(value)
-    const newArr = AddChild_useState(data, value, id, ArrIndexTrack)
-    let bool = AddChild_API(data, value, id);
+    const newArr = AddChild_useState(data, value, ArrIndexTrack)
+    let bool = AddChild_API(newArr,ArrIndexTrack);
     bool && setData(newArr)
   }
   //delete_page function
-  const HandleDelete = (id) => {
-    let newArr = Delete_useState(id, data)
-    let bool = Delete_API(id)
+  const HandleDelete = (ArrIndexTrack) => {
+    let newArr = Delete_useState(data,ArrIndexTrack)
+    let bool = Delete_API(data,ArrIndexTrack)
     bool && setData(newArr)
   }
   //update_page function
