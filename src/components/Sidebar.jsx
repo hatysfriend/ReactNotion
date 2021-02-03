@@ -14,7 +14,6 @@ const Sidebar = ({ data, handleAdd, HandleDelete,HandleUpdate,HandleAddChild }) 
   const showSidebarp = () => setSidebarp(!sidebarp);
   let ArrIndexTrack = [];
 
-  let ArrIndexTrack = [];
 
   return (
     <>

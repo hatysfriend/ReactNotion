@@ -37,6 +37,7 @@ export const SidebarLoops = ({ item, HandleDelete, subnav1,HandleUpdate,HandleAd
                     <HiIcons.HiDotsHorizontal className="settingsBtn" onClick={() => {
                         setIsOpen(true);
                         console.log(ArrIndexTrack);
+                        console.table(item);
                     }} /></div>
             </>
         );

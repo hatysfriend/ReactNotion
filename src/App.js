@@ -42,13 +42,13 @@ export default function App() {
   //delete_page function
   const HandleDelete = (ArrIndexTrack) => {
     let newArr = Delete_useState(data,ArrIndexTrack)
-    let bool = Delete_API(data,ArrIndexTrack)
+    let bool = Delete_API(newArr,ArrIndexTrack, data)
     bool && setData(newArr)
   }
   //update_page function
-  const HandleUpdate = (id, value) => {
-    let newArr = Update_useState(data, id, value)
-    let bool = Update_API(id, value)
+  const HandleUpdate = (ArrIndexTrack, value) => {
+    let newArr = Update_useState(data, ArrIndexTrack, value)
+    let bool = Update_API(ArrIndexTrack, newArr)
     bool && setData(newArr)
   }
 

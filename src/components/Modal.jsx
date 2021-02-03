@@ -24,7 +24,7 @@ export default function Modal({ open, children, onClose, edit_item, HandleDelete
         setShowInputAdd(!showInputAdd)
     }
     const rename = () => {
-        HandleUpdate(edit_item._id, document.getElementById('renametxt').value)
+        HandleUpdate(ArrIndexTrack, document.getElementById('renametxt').value)
         onClose();
         setShowInputAdd(!showInputAdd)
     }
