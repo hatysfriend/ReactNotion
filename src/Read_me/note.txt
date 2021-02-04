@@ -18,6 +18,9 @@
 - convining submenu.jsx and submenuTab.jsx               -[done]
 - implementing rename(api_update) function               -[done]
 - implementing add_child_page function                   -[done]
+- finished all API functions                             -[done] 
+- making routers dynamicly                               -[almost]
+- implementing main content page                         -[in progress]
 
 
 

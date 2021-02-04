@@ -1,11 +1,22 @@
 import React,{useState} from 'react'
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import '../styles/PageContent.css';
+import HeaderComponent from './HeaderComponent';
 
-// inside item content is like [['div','text1'],['a','text2'],['h1','text3']]
+// inside item content is like [{type:'div', content:'text1', textColour:'red'},['a','text2'],['h1','text3']]
     //item.content: [i][0]=tag name
     //              [i][1]=text 
     //              [i][2]=className
     //              [i][3]=id
     //              [i][4]= onclick? idk...
+
+// {
+//     type:'div',
+//     content:'text1',
+//     styles:[{'text-align': 'center'}]
+//     <PageContent styles={item.styles}>
+// }
 
     // input.setAttribute('id', id);
     // input.setAttribute('type', 'number');
@@ -31,9 +42,24 @@ export default function PageContent({item}) {
     }
     
     return (
-            <div className={item.title} id={item._id}>
-                <div>title :{item.title}</div>
-                {item.content && count < length && newLine()}
+            <div className="PageComponent" >
+                
+                <div className="headerTitle" contentEditable="true" data-placeholder="Untitled" >{item.title}</div>
+
+                <span className="mainContentArea">
+                    <div className="contentButtons">
+
+                        <div>
+                            <div><AiIcons.AiOutlinePlus className="addContentButton"/></div>
+                        </div>
+
+                        <div className="settingsMenu">
+                            <div className="settingsContentButton"><AiIcons.AiOutlineSetting /></div>
+                        </div>
+             
+                        <span className="contentArea" contentEditable="true" data-placeholder="Type '/' for commands"></span>
+                    </div>
+                </span>
             </div>
     )
 }

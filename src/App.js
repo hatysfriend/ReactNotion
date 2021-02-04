@@ -56,16 +56,18 @@ export default function App() {
 
 
   //route loop for parent page
-  function routingLoop() {
+  const routingLoop=()=> {
     return (
       <><Switch>
-        <Route path='/' component={() => <div className='lol'><h1>default page</h1></div>} />
-        {data.map((item) => {
-          return (
-            <Route key={item.path} path={item.path}
-              render={() => <PageContent item={item} />} />
-          );
-        })}
+        <Route path='/' exact component={() => <div className='lol'><h1>default page</h1></div>} />
+        
+         {data[0]&& 
+         data.map(item=>{
+           return <Route path={item.path} exact component={()=><PageContent item={item} />} />
+         })
+        
+         }
+        
       </Switch></>
     );
   }

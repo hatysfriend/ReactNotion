@@ -1,0 +1,54 @@
+/*The Page Content Area*/
+.PageComponent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+/*Page Title*/
+.headerTitle{
+    text-align: center;
+    color: white;
+}
+
+/* main content container */
+.mainContentArea{
+    margin:auto;
+}
+/* Content Area */
+.contentArea:empty::before {
+  content:attr(data-placeholder);
+  color:gray
+}
+
+
+.contentArea{
+  cursor:text;
+}
+
+/*Add Button + Settings Button*/
+.contentButtons{
+  display: flex;
+  flex-direction: row;
+  padding-right:5px;
+  color:rgba(190, 190, 190, 0.7);
+  border-radius: 10px;
+  
+}
+.addContentButton, .settingsContentButton {
+  margin-right: 5px;
+  display: none;
+  cursor: pointer;
+  
+}
+
+.mainContentArea:hover .addContentButton{
+  display: block;
+}
+
+.mainContentArea:hover .settingsContentButton{
+  display: block;
+}
+
+.addContentButton:hover, .settingsContentButton:hover{
+  background: #9999998e;
+}
