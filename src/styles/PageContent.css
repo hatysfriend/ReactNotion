@@ -2,17 +2,20 @@
 .PageComponent {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 5%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 25%;
 }
 /*Page Title*/
 .headerTitle{
-    text-align: center;
     color: white;
 }
 
 /* main content container */
 .mainContentArea{
-    margin:auto;
+    width:80%;
+    /* margin:auto; */
 }
 /* Content Area */
 .contentArea:empty::before {
@@ -31,8 +34,6 @@
   flex-direction: row;
   padding-right:5px;
   color:rgba(190, 190, 190, 0.7);
-  border-radius: 10px;
-  
 }
 .addContentButton, .settingsContentButton {
   margin-right: 5px;
@@ -44,7 +45,6 @@
 .mainContentArea:hover .addContentButton{
   display: block;
 }
-
 .mainContentArea:hover .settingsContentButton{
   display: block;
 }

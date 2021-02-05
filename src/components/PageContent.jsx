@@ -26,27 +26,27 @@ import HeaderComponent from './HeaderComponent';
 
 export default function PageContent({item}) {
     
-    let length = item.content.length;
-    let [count, setCount]= useState(0)
+    //let length = item.content.length;
+    let [count, setCount]=useState(0)
     
-    const newLine = () => {
-        console.log('count: ' + count + " length :" + length)
-        console.log(item.content[count][0] + ' : ' + item.content[count][1])
+    // const newLine = () => {
+    //     console.log('count: ' + count + " length :" + length)
+    //     console.log(item.content[count][0] + ' : ' + item.content[count][1])
 
-        console.log(JSON.stringify(item.content))
-        let para = document.createElement(item.content[count][0]);  //1. new tag
-        para.innerHTML = item.content[count][1]
-        let addDiv = document.getElementById(item._id);  //4. place to add
-        document.body.appendChild(para, addDiv)
-        setCount(count+1)
-    }
+    //     console.log(JSON.stringify(item.content))
+    //     let para = document.createElement(item.content[count][0]);  //1. new tag
+    //     para.innerHTML = item.content[count][1]
+    //     let addDiv = document.getElementById(item._id);  //4. place to add
+    //     document.body.appendChild(para, addDiv)
+    //     setCount(count+1)
+    // }
     
     return (
             <div className="PageComponent" >
                 
-                <div className="headerTitle" contentEditable="true" data-placeholder="Untitled" >{item.title}</div>
+                <h1 className="headerTitle" data-placeholder="Untitled" >{item.title}</h1>
 
-                <span className="mainContentArea">
+                <div className="mainContentArea">
                     <div className="contentButtons">
 
                         <div>
@@ -57,9 +57,17 @@ export default function PageContent({item}) {
                             <div className="settingsContentButton"><AiIcons.AiOutlineSetting /></div>
                         </div>
              
-                        <span className="contentArea" contentEditable="true" data-placeholder="Type '/' for commands"></span>
+                        <div className="contentArea" data-placeholder="Type '/' for commands"></div>
                     </div>
-                </span>
+                </div>
             </div>
     )
 }
+
+// let arr = [{tag:'div',content:'kakeru', style:"text-align:center"}]
+
+// let para = document.createElement(arr[0].tag);  //1. generating a tag
+//     para.innerHTML = arr[0].content;            //2. inserting content
+//     para.setAttribute('style', arr[0].style);   //3. adding a style
+        
+// document.getElementById("p1").appendChild(para)
